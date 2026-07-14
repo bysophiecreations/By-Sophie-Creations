@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta property="og:title" content="By Sophie Créations">
+
+<meta property="og:description"
+content="Créations artisanales en résine et bijoux personnalisés">
+
+<meta property="og:image"
+content="logo.jpg">
+
+<meta property="og:type"
+content="website">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bracelets - By Sophie Créations</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="hero">
+
+    <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
+
+    <h1>Bracelets</h1>
+
+    <p>
+        Découvrez notre collection de bracelets artisanaux.
+    </p>
+
+    <div class="galerie-creations" id="galerie"></div>
+
+    <a href="creations.html" class="btn retour">
+        Retour aux créations
+    </a>
+
+    <a href="monpanier.html" class="btn panier">
+        Mon panier
+    </a>
+
+</section>
+
+<script>
+
+const creations = [
+
+    {photo:"B1.jpg", description:"Bracelet forme de fleur orange", prix:"5 €"},
+    {photo:"B2.jpg", description:"Coeur rouge pailleté dans son encadrement métallique", prix:"6 €"},
+    {photo:"B3.jpg", description:"Cercle jaune avec un soleil noir", prix:"4 €"},
+   {photo:"parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
+    {photo:"parure2.jpg", description:"Parure complète en forme de larme marron clair assortie de coquillages", prix:"15 €"},
+{photo:"B4.jpg", description:"Coeur jaune pailleté", prix:"2 €"},
+  
+  
+];
+  // Mélange les créations
+creations.sort(() => Math.random() - 0.5);
+const galerie = document.getElementById("galerie");
+
+creations.forEach(c => {
+
+    galerie.innerHTML += `
+        <div class="creation">
+            <img src="images/${c.photo}" alt="${c.description}">
+            <p class="description">${c.description}</p>
+            <p class="prix">${c.prix}</p>
+
+            <button class="btn-panier"
+                onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
+                Ajouter au panier
+            </button>
+        </div>
+    `;
+
+});
+
+function ajouterAuPanier(description, prix, photo) {
+
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    panier.push({
+        description: description,
+        prix: prix,
+        photo: photo
+    });
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+
+    alert("Article ajouté au panier !");
+}
+
+</script>
+<script>
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+</script>
+<script>
+document.onkeydown = function(e){
+    if (e.keyCode == 123) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode == 85) {
+        return false;
+    }
+}
+</script>
+<script>
+
+document.querySelectorAll("img").forEach(img => {
+
+img.setAttribute("draggable","false");
+
+img.addEventListener("dragstart", function(e){
+e.preventDefault();
+});
+
+});
+
+</script>
+<script>
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+document.querySelectorAll("img").forEach(img => {
+
+    img.setAttribute("draggable","false");
+
+    img.addEventListener("dragstart", function(e){
+        e.preventDefault();
+    });
+
+});
+
+</script>
+<footer>
+
+<hr>
+
+<p>
+
+<a href="mentionslegales.html">Mentions légales</a> |
+
+<a href="conditionsdevente.html">CGV</a> |
+
+<a href="confidentialite.html">Confidentialité</a> |
+
+<a href="cookies.html">Cookies</a> |
+
+
+
+</p>
+
+<p>
+© 2025 By Sophie Créations - Tous droits réservés
+</p>
+
+</footer>
+</body>
+</html>
+

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta property="og:title" content="By Sophie Créations">
+
+<meta property="og:description"
+content="Créations artisanales en résine et bijoux personnalisés">
+
+<meta property="og:image"
+content="logo.jpg">
+
+<meta property="og:type"
+content="website">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande - By Sophie Créations</title>
+
+```
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+<section class="hero">
+
+```
+<img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
+
+<h1>Finaliser ma commande</h1>
+
+<h2>Récapitulatif de votre commande</h2>
+
+<div id="recap-panier"></div>
+
+<hr>
+
+<form action="https://formsubmit.co/bysophiecreations@gmail.com" method="POST">
+
+    <input type="hidden" name="_captcha" value="true">
+
+<input type="text" name="_honey" style="display:none">
+
+<input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="Nouvelle commande By Sophie Créations">
+
+    <input type="hidden" name="Articles commandés" id="articlesCommande">
+
+    <p>
+        <input type="text" name="Nom" placeholder="Nom" required>
+    </p>
+
+    <p>
+        <input type="text" name="Prénom" placeholder="Prénom" required>
+    </p>
+
+    <p>
+        <input type="email" name="Email" placeholder="Adresse e-mail" required>
+    </p>
+
+    <p>
+        <input type="tel" name="Téléphone" placeholder="Téléphone" required>
+    </p>
+
+    <p>
+        <textarea name="Adresse" placeholder="Adresse de livraison" rows="4" required></textarea>
+    </p>
+
+    <p>
+        <textarea name="Commentaire" placeholder="Commentaire ou demande particulière" rows="4"></textarea>
+    </p>
+
+    <button type="submit" class="btn">
+        Valider la commande
+    </button>
+
+</form>
+
+<br>
+
+<a href="monpanier.html" class="btn retour">
+    Retour au panier
+</a>
+```
+
+</section>
+
+<script>
+
+const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+let listeArticles = "";
+let sousTotal = 0;
+
+const fraisEnvoi = 5;
+
+const recap = document.getElementById("recap-panier");
+
+if (panier.length === 0) {
+
+    recap.innerHTML = "<p>Votre panier est vide.</p>";
+
+} else {
+
+    panier.forEach(article => {
+
+        recap.innerHTML += `
+            <div class="creation">
+                <img src="images/${article.photo}" style="max-width:150px;border-radius:10px;">
+                <p>${article.description}</p>
+                <p class="prix">${article.prix}</p>
+            </div>
+        `;
+
+        listeArticles += article.description + " - " + article.prix + "\n";
+
+        sousTotal += parseFloat(
+            article.prix.replace("€", "").replace(",", ".")
+        );
+    });
+
+    const total = sousTotal + fraisEnvoi;
+
+  recap.innerHTML += `
+    <div class="creation">
+        <img src="images/${article.photo}" 
+             alt="${article.description}"
+             style="max-width:150px; border-radius:10px;">
+
+        <p class="description">${article.description}</p>
+
+        <p class="prix">${article.prix}</p>
+    </div>
+`;
+
+    document.getElementById("articlesCommande").value =
+        listeArticles +
+        "\nSous-total : " + sousTotal.toFixed(2) + " €" +
+        "\nFrais d'envoi : " + fraisEnvoi.toFixed(2) + " €" +
+        "\nTotal : " + total.toFixed(2) + " €";
+}
+</script>
+<script>
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+</script>
+<script>
+document.onkeydown = function(e){
+    if (e.keyCode == 123) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode == 85) {
+        return false;
+    }
+}
+</script>
+<script>
+
+document.querySelectorAll("img").forEach(img => {
+
+img.setAttribute("draggable","false");
+
+img.addEventListener("dragstart", function(e){
+e.preventDefault();
+});
+
+});
+
+</script>
+<script>
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+document.querySelectorAll("img").forEach(img => {
+
+    img.setAttribute("draggable","false");
+
+    img.addEventListener("dragstart", function(e){
+        e.preventDefault();
+    });
+
+});
+
+</script>
+<footer>
+
+<hr>
+
+<p>
+
+<a href="mentionslegales.html">Mentions légales</a> |
+
+<a href="conditionsdevente.html">CGV</a> |
+
+<a href="confidentialite.html">Confidentialité</a> |
+
+<a href="cookies.html">Cookies</a> |
+
+
+
+</p>
+
+<p>
+© 2025 By Sophie Créations - Tous droits réservés
+</p>
+
+</footer>
+</body>
+</html>

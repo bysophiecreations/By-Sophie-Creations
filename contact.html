@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact - By Sophie Créations</title>
+
+    <meta name="description"
+        content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+    <meta name="keywords"
+        content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+    <meta name="author" content="By Sophie Créations">
+    <meta name="robots" content="index,follow">
+
+    <meta property="og:title" content="By Sophie Créations">
+    <meta property="og:description"
+        content="Créations artisanales en résine et bijoux personnalisés">
+    <meta property="og:image" content="logo.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <img src="logo.jpg" alt="Logo By Sophie Créations" class="logo-header">
+
+        <h1>Contact</h1>
+
+        <p>Pour toute question ou commande personnalisée :</p>
+
+        <a href="https://www.instagram.com/annesophie.berland.338"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn">
+            📷 Instagram
+        </a>
+
+        <a href="https://www.facebook.com/profile.php?id=61590365363172"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn">
+            📘 Facebook
+        </a>
+
+        <br><br>
+
+        <a href="mail.html"
+            class="btn">
+            ✉️ Envoyer un e-mail
+        </a>
+
+        <br><br>
+
+        <a href="index.html" class="btn retour">
+            Retour à l'accueil
+        </a>
+
+    </section>
+
+    <footer>
+
+        <hr>
+
+        <p>
+            <a href="mentionslegales.html">Mentions légales</a> |
+            <a href="conditionsdevente.html">CGV</a> |
+            <a href="confidentialite.html">Confidentialité</a> |
+            <a href="cookies.html">Cookies</a>
+        </p>
+
+        <p>
+            © 2025 By Sophie Créations - Tous droits réservés
+        </p>
+
+    </footer>
+
+    <script>
+        // Désactive le clic droit
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+        // Désactive certaines touches de développement
+        document.onkeydown = function (e) {
+            if (e.keyCode === 123) return false;
+
+            if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74))
+                return false;
+
+            if (e.ctrlKey && e.keyCode === 85)
+                return false;
+        };
+
+        // Empêche le glisser-déposer des images
+        document.querySelectorAll("img").forEach(img => {
+            img.setAttribute("draggable", "false");
+
+            img.addEventListener("dragstart", function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head><meta property="og:title" content="By Sophie Créations">
+
+<meta property="og:description"
+content="Créations artisanales en résine et bijoux personnalisés">
+
+<meta property="og:image"
+content="logo.jpg">
+
+<meta property="og:type"
+content="website">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendentifs - By Sophie Créations</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="hero">
+
+    <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
+
+    <h1>Pendentifs</h1>
+
+    <p>
+        Découvrez notre collection de pendentifs artisanaux.
+    </p>
+
+    <div class="galerie-creations" id="galerie"></div>
+
+    <a href="creations.html" class="btn retour">
+        Retour aux créations
+</a>
+    <a href="monpanier.html" class="btn panier">
+    Mon panier
+
+    </a>
+
+</section>
+
+<script>
+
+const creations = [
+
+    {photo:"P1.jpg", description:"Coquillage sur lit de sable", prix:"8 €"},
+    {photo:"P2.jpg", description:"Cercle bleu avec feuille d'or", prix:"5 €"},
+    {photo:"P3.jpg", description:"Cadre bleu incrusté de feuilles d'or", prix:"10 €"},
+    {photo:"P4.jpg", description:"Etoile sur le sable", prix:"10 €"},
+    {photo:"P7.jpg", description:"Etoile de mer sur sable avec feuille d'or", prix:"10 €"},
+    {photo:"P8.jpg", description:"Larme transparente avec coquillage", prix:"8 €"},
+{photo:"P9.jpg", description:"Cadre bleu avec feuille dorée", prix:"10 €"},
+    {photo:"P10.jpg", description:"Cadre transparent avec coquillages et feuilles d'or", prix:"10 €"},
+    {photo:"P11.jpg", description:"Coeur de mousse", prix:"5 €"},
+    {photo:"P12.jpg", description:"Coeur rouge pailleté", prix:"12 €"},
+{photo:"P13.jpg", description:"Cadre bleu pailleté avec feuille dorée", prix:"7 €"},
+    {photo:"P14.jpg", description:"Cadre transparent avec vagues bleues et feuille dorée", prix:"12 €"},
+    {photo:"P15.jpg", description:"Pomme verte avec serpentins métalliques", prix:"6 €"},
+    {photo:"P16.jpg", description:"Cadre rectangulaire transparent avec vagues bleues", prix:"5 €"},
+{photo:"P17.jpg", description:"Larme marron clair et sa torsade dorée", prix:"7 €"},
+    {photo:"P18.jpg", description:"Cercle blanc et tourbillon métallique", prix:"6 €"},
+    {photo:"P19.jpg", description:"Larme rouge pailletée avec feuille dorée, sertie dans un cadre doré", prix:"10 €"},
+    {photo:"P20.jpg", description:"Rectangle vert clair avec fissures et feuilles d'or", prix:"9 €"},
+    {photo:"P22.jpg", description:"Cercle rouge pailleté et sa feuille dorée", prix:"10 €"},
+    {photo:"P23.jpg", description:"Larme orangée sous tourbillon métallique", prix:"3 €"},
+    {photo:"P24.jpg", description:"Description du pendentif 4", prix:"5 €"},
+{photo:"parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
+{photo:"parure2.jpg", description:"Parure complète couleur en forme de larme marron clair assorti de coquillages", prix:"15 €"},
+{photo:"P25.jpg", description:"Pendentif orné d'une marguerite et d'une boule avec un zirconium", prix:"8 €"},
+{photo:"P26.jpg", description:"Rond vert avec un arbre de vie", prix:"10 €"},
+{photo:"parure4.jpg", description:"Parure (Boucles + Pendentif) Larme marron avec étoile coquillage", prix:"12 €"},
+{photo:"parure5.jpg", description:"Parure Larme rose et sa fleur blanche", prix:"12 €"},
+{photo:"P28.jpg", description:"Larme bleue ornée d'une perle", prix:"8 €"},
+{photo:"P29.jpg", description:"Cercle noir pailleté avec un zirconium", prix:"10 €"},
+{photo:"P30.jpg", description:"Oval transparent orné d'un arbre de vie doré", prix:"10 €"},
+{photo:"P31.jpg", description:"Oval transparent avec un coeur et l'inscription LOVE en rouge", prix:"10 €"},
+{photo:"P32.jpg", description:"Rectangle blanc rosé avec papillon et étoile", prix:"10 €"},
+{photo:"Parure6.jpg", description:"Parure rose pailletée et soleil doré", prix:"12 €"},
+ 
+
+
+]
+creations.sort(() => Math.random() - 0.5);
+
+const galerie = document.getElementById("galerie");
+
+
+
+creations.forEach(c => {
+
+
+galerie.innerHTML += `
+    <div class="creation" id="${c.id || ''}">
+        <img src="images/${c.photo}" alt="${c.description}">
+        <p class="description">${c.description}</p>
+        <p class="prix">${c.prix}</p>
+
+        <button class="btn-panier"
+            onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
+            Ajouter au panier
+        </button>
+    </div>
+`;
+});
+
+
+function ajouterAuPanier(description, prix, photo) {
+
+  let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    panier.push({
+        description: description,
+        prix: prix,
+        photo: photo
+    });
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+
+    alert("Article ajouté au panier !");
+}
+</script>
+<script>
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+</script>
+<script>
+document.addEventListener("keydown", function(e){
+    if (e.key === "F12") e.preventDefault();
+
+    if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
+        e.preventDefault();
+    }
+
+    if (e.ctrlKey && e.key === "U") {
+        e.preventDefault();
+    }
+});
+
+</script>
+<script>
+
+document.querySelectorAll("img").forEach(img => {
+
+img.setAttribute("draggable","false");
+
+img.addEventListener("dragstart", function(e){
+e.preventDefault();
+});
+
+});
+
+</script>
+
+
+<footer>
+
+<hr>
+
+<p>
+
+<a href="mentionslegales.html">Mentions légales</a> |
+
+<a href="conditionsdevente.html">CGV</a> |
+
+<a href="confidentialite.html">Confidentialité</a> |
+
+<a href="cookies.html">Cookies</a> |
+
+
+
+</p>
+
+<p>
+© 2025 By Sophie Créations - Tous droits réservés
+</p>
+
+</footer>
+</body>
+</html>

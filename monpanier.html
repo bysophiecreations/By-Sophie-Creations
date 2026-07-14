@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<a href="monpanier.html" class="btn panier">
+    🛒 Mon panier
+</a>
+<head>
+    <meta property="og:title" content="By Sophie Créations">
+
+<meta property="og:description"
+content="Créations artisanales en résine et bijoux personnalisés">
+
+<meta property="og:image"
+content="logo.jpg">
+
+<meta property="og:type"
+content="website">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon panier - By Sophie Créations</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="hero">
+
+    <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
+
+    <h1>Mon panier</h1>
+
+    <div id="panier"></div>
+
+    <button onclick="viderPanier()" class="btn">
+        Vider le panier
+    </button>
+
+    <br><br>
+
+   <button onclick="location.href='commande.html'" class="btn">
+    Passer commande
+</button>
+
+<br><br>
+
+    <a href="creations.html" class="btn retour">
+        Continuer mes achats
+    </a>
+    <a href="monpanier.html" class="btn panier">
+    🛒 Mon panier
+</a>
+
+</section>
+
+<script>
+
+const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+const zonePanier = document.getElementById("panier");
+
+if (panier.length === 0) {
+
+    zonePanier.innerHTML = "<p>Votre panier est vide.</p>";
+
+} else {
+
+    panier.forEach(article => {
+
+        zonePanier.innerHTML += `
+            <div class="creation">
+                <img src="images/${article.photo}" alt="${article.description}">
+                <p>${article.description}</p>
+                <p class="prix">${article.prix}</p>
+            </div>
+        `;
+
+    });
+
+}
+function passerCommande() {
+
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    if (panier.length === 0) {
+        alert("Votre panier est vide.");
+        return;
+    }
+
+    let commande = "Bonjour,%0D%0A%0D%0AJe souhaite commander :%0D%0A%0D%0A";
+
+    panier.forEach(article => {
+        commande += "- " + article.description + " (" + article.prix + ")%0D%0A";
+    });
+
+    window.location.href =
+        "mailto:bysophiecreations@gmail.com?subject=Commande By Sophie Créations&body=" + commande;
+}
+function viderPanier() {
+    localStorage.removeItem("panier");
+    location.reload();
+}
+
+</script>
+<script>
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+</script>
+<script>
+document.onkeydown = function(e){
+    if (e.keyCode == 123) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode == 85) {
+        return false;
+    }
+}
+</script>
+<script>
+
+document.querySelectorAll("img").forEach(img => {
+
+img.setAttribute("draggable","false");
+
+img.addEventListener("dragstart", function(e){
+e.preventDefault();
+});
+
+});
+
+</script>
+<script>
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+document.querySelectorAll("img").forEach(img => {
+
+    img.setAttribute("draggable","false");
+
+    img.addEventListener("dragstart", function(e){
+        e.preventDefault();
+    });
+
+});
+
+</script>
+<footer>
+
+<hr>
+
+<p>
+
+<a href="mentionslegales.html">Mentions légales</a> |
+
+<a href="conditionsdevente.html">CGV</a> |
+
+<a href="confidentialite.html">Confidentialité</a> |
+
+<a href="cookies.html">Cookies</a> |
+
+
+
+</p>
+
+<p>
+© 2025 By Sophie Créations - Tous droits réservés
+</p>
+
+</footer>
+</body>
+</html>
+

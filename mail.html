@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Envoyer un message - By Sophie Créations</title>
+
+    <meta name="description" content="Contactez By Sophie Créations grâce à notre formulaire de contact.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="hero">
+
+    <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
+
+    <h1>Envoyer un message</h1>
+
+    <p>Remplissez le formulaire ci-dessous, je vous répondrai dans les meilleurs délais.</p>
+
+    <form action="https://formsubmit.co/bysophiecreation@gmail.com" method="POST">
+
+        <!-- Configuration FormSubmit -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Nouveau message depuis le site By Sophie Créations">
+        <input type="hidden" name="_template" value="table">
+
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="Nom" required>
+
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="Prénom" required>
+
+        <label for="email">Votre adresse e-mail</label>
+        <input type="email" id="email" name="Email" required>
+
+        <label for="motif">Motif</label>
+        <select id="motif" name="Motif" required>
+            <option value="">-- Choisissez un motif --</option>
+            <option>Commande</option>
+            <option>Demande d'information</option>
+            <option>Réclamation</option>
+            <option>Partenariat</option>
+            <option>Autre</option>
+        </select>
+
+        <label for="message">Votre message</label>
+        <textarea id="message" name="Message" rows="8" required></textarea>
+
+        <br>
+
+        <button type="submit" class="btn">
+            📩 Envoyer le message
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="contact.html" class="btn retour">
+        ← Retour à la page Contact
+    </a>
+
+</section>
+
+<footer>
+
+<hr>
+
+<p>
+<a href="mentionslegales.html">Mentions légales</a> |
+<a href="conditionsdevente.html">CGV</a> |
+<a href="confidentialite.html">Confidentialité</a> |
+<a href="cookies.html">Cookies</a>
+</p>
+
+<p>
+© 2025 By Sophie Créations - Tous droits réservés
+</p>
+
+</footer>
+
+<script>
+// Désactive le clic droit
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+// Désactive certaines touches développeur
+document.onkeydown = function(e){
+    if(e.keyCode==123) return false;
+    if(e.ctrlKey && e.shiftKey && (e.keyCode==73 || e.keyCode==74)) return false;
+    if(e.ctrlKey && e.keyCode==85) return false;
+};
+
+// Empêche le glisser-déposer des images
+document.querySelectorAll("img").forEach(img=>{
+    img.setAttribute("draggable","false");
+    img.addEventListener("dragstart",e=>e.preventDefault());
+});
+</script>
+
+</body>
+</html>

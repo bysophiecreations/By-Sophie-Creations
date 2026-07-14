@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta property="og:title" content="By Sophie Créations">
+
+<meta property="og:description"
+content="Créations artisanales en résine et bijoux personnalisés">
+
+<meta property="og:image"
+content="logo.jpg">
+
+<meta property="og:type"
+content="website">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porte-clés - By Sophie Créations</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="hero">
+
+    <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
+
+    <h1>Porte-clés</h1>
+
+    <p>
+        Découvrez notre collection de porte-clés artisanaux.
+    </p>
+
+    <div class="galerie-creations" id="galerie"></div>
+
+    <a href="creations.html" class="btn retour">
+        Retour aux créations
+     <a href="monpanier.html" class="btn panier">
+    Mon panier
+</a>   
+    </a>
+
+</section>
+
+<script>
+
+const creations = [
+
+    {photo:"PC1.jpg", description:"Diamant rouge", prix:"3 €"},
+    {photo:"PC2.jpg", description:"Coquillages sur le sable", prix:"5 €"},
+    {photo:"PC3.jpg", description:"Diamant blanc", prix:"3 €"},
+    {photo:"PC4.jpg", description:"Pièce de puzzle", prix:"3 €"},
+    {photo:"PC5.jpg", description:"Coquillage sur le sable", prix:"4 €"},
+    {photo:"PC6.jpg", description:"Porte-clé prénom", prix:"5 €"},
+    {photo:"PC7.jpg", description:"Papillon", prix:"3 € l'unité"},
+    {photo:"PC8.jpg", description:"Porte-clé personnalisable", prix:"5,50 €"},
+    {photo:"PC9.jpg", description:"Ourson bleu pailleté", prix:"3 €"},
+    {photo:"PC10.jpg", description:"Ourson transparent", prix:"3 €"},
+    {photo:"PC11.jpg", description:"Ourson transparent avec un noeud", prix:"3 €"},
+    {photo:"PC12.jpg", description:"Oval de cristal avec un coeur émeraude", prix:"2 €"},
+    {photo:"PC13.jpg", description:"Ourson vert kaki pailleté", prix:"3 €"},
+    {photo:"PC14.jpg", description:"Ourson rouge", prix:"3 €"},
+    {photo:"PC15.jpg", description:"Ourson vert", prix:"3 €"},
+    {photo:"PC16.jpg", description:"Etoile de mer sur le sable", prix:"3 €"},
+{photo:"PC17.jpg", description:"Coeur avec inscription LOVE dans un cercle transparent", prix:"3 €"},
+{photo:"PC19.jpg", description:"Cercle jaune ornée d'un lion", prix:"4 €"},
+{photo:"PC20.jpg", description:"Cercle jaune avec ruche et abeille", prix:"4 €"},
+{photo:"PC21.jpg", description:"Tortue blanche sur la plage", prix:"3 €"},
+{photo:"PC22.jpg", description:"Levé de soleil sur un palmier", prix:"4 €"},
+
+
+];
+// Mélange les créations
+creations.sort(() => Math.random() - 0.5);
+const galerie = document.getElementById("galerie");
+
+
+
+
+creations.forEach(c => {
+
+    galerie.innerHTML += `
+        <div class="creation">
+            <img src="images/${c.photo}" alt="${c.description}">
+            <p class="description">${c.description}</p>
+            <p class="prix">${c.prix}</p>
+
+           <button class="btn-panier"
+onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
+    Ajouter au panier
+</button>
+        </div>
+    `;
+
+});
+
+function ajouterAuPanier(description, prix, photo) {
+
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    panier.push({
+        description: description,
+        prix: prix,
+        photo: photo
+    });
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+
+    alert("Article ajouté au panier !");
+}
+</script>
+<script>
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+</script>
+<script>
+document.onkeydown = function(e){
+    if (e.keyCode == 123) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode == 85) {
+        return false;
+    }
+}
+</script>
+<script>
+
+document.querySelectorAll("img").forEach(img => {
+
+img.setAttribute("draggable","false");
+
+img.addEventListener("dragstart", function(e){
+e.preventDefault();
+});
+
+});
+
+</script>
+<script>
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+document.querySelectorAll("img").forEach(img => {
+
+    img.setAttribute("draggable","false");
+
+    img.addEventListener("dragstart", function(e){
+        e.preventDefault();
+    });
+
+});
+
+</script>
+<footer>
+
+<hr>
+
+<p>
+
+<a href="mentionslegales.html">Mentions légales</a> |
+
+<a href="conditionsdevente.html">CGV</a> |
+
+<a href="confidentialite.html">Confidentialité</a> |
+
+<a href="cookies.html">Cookies</a> |
+
+
+
+</p>
+
+<p>
+© 2025 By Sophie Créations - Tous droits réservés
+</p>
+
+</footer>
+</body>
+</html>
+
