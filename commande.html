@@ -98,9 +98,8 @@ content="index,follow">
     <button type="submit" class="btn">
         Valider la commande
     </button>
-<input type="hidden" name="redirect" value="https://bysophiecreations.netlify.app/merci.html">
+<input type="hidden" name="redirect" value="https://bysophiecreations.github.io/By-Sophie-Creations/merci.html">
 
-</form>
 
 <br>
 
@@ -138,7 +137,16 @@ if (panier.length === 0) {
             </div>
         `;
 
-        listeArticles += article.description + " - " + article.prix + "\n";
+     listeArticles += `
+<div style="margin-bottom:20px;">
+    <img src="https://bysophiecreations.github.io/By-Sophie-Creations/images/${article.photo}"
+         width="120"
+         style="border-radius:8px;"><br>
+
+    <strong>${article.description}</strong><br>
+    Prix : ${article.prix}
+</div>
+`;
 
         sousTotal += parseFloat(
             article.prix.replace("€", "").replace(",", ".")
@@ -146,7 +154,14 @@ if (panier.length === 0) {
     });
 
     const total = sousTotal + fraisEnvoi;
-
+recap.innerHTML += `
+    <hr>
+    <p><strong>Sous-total :</strong> ${sousTotal.toFixed(2)} €</p>
+    <p><strong>Frais d'envoi :</strong> ${fraisEnvoi.toFixed(2)} €</p>
+    <p style="font-size:1.2em;">
+        <strong>Total :</strong> ${total.toFixed(2)} €
+    </p>
+`;
  
 
     document.getElementById("articlesCommande").value =
