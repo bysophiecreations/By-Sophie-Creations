@@ -39,9 +39,9 @@ content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commande - By Sophie Créations</title>
 
-```
+
 <link rel="stylesheet" href="style.css">
-```
+
 
 </head>
 
@@ -49,7 +49,6 @@ content="index,follow">
 
 <section class="hero">
 
-```
 <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
 
 <h1>Finaliser ma commande</h1>
@@ -60,14 +59,15 @@ content="index,follow">
 
 <hr>
 
-<form action="https://formsubmit.co/bysophiecreations@gmail.com" method="POST">
+<form action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
 
-    <input type="hidden" name="_captcha" value="true">
+   <input type="hidden" name="access_key" value="4485a489-3fec-4f53-b05a-0da03957a04b">
 
-<input type="text" name="_honey" style="display:none">
+<input type="hidden" name="subject" value="Nouvelle commande By Sophie Créations">
 
-<input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_subject" value="Nouvelle commande By Sophie Créations">
+<input type="hidden" name="from_name" value="By Sophie Créations">
+
+<input type="hidden" name="botcheck" style="display:none">
 
     <input type="hidden" name="Articles commandés" id="articlesCommande">
 
@@ -82,7 +82,7 @@ content="index,follow">
     <p>
         <input type="email" name="Email" placeholder="Adresse e-mail" required>
     </p>
-
+<input type="hidden" name="replyto" id="replyto">
     <p>
         <input type="tel" name="Téléphone" placeholder="Téléphone" required>
     </p>
@@ -98,6 +98,7 @@ content="index,follow">
     <button type="submit" class="btn">
         Valider la commande
     </button>
+<input type="hidden" name="redirect" value="https://bysophiecreations.netlify.app/merci.html">
 
 </form>
 
@@ -106,7 +107,7 @@ content="index,follow">
 <a href="monpanier.html" class="btn retour">
     Retour au panier
 </a>
-```
+
 
 </section>
 
@@ -146,23 +147,16 @@ if (panier.length === 0) {
 
     const total = sousTotal + fraisEnvoi;
 
-  recap.innerHTML += `
-    <div class="creation">
-        <img src="images/${article.photo}" 
-             alt="${article.description}"
-             style="max-width:150px; border-radius:10px;">
-
-        <p class="description">${article.description}</p>
-
-        <p class="prix">${article.prix}</p>
-    </div>
-`;
+ 
 
     document.getElementById("articlesCommande").value =
         listeArticles +
         "\nSous-total : " + sousTotal.toFixed(2) + " €" +
         "\nFrais d'envoi : " + fraisEnvoi.toFixed(2) + " €" +
         "\nTotal : " + total.toFixed(2) + " €";
+document.querySelector('input[name="Email"]').addEventListener("input", function () {
+    document.getElementById("replyto").value = this.value;
+});
 }
 </script>
 <script>
