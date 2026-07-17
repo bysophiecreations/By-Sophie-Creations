@@ -22,12 +22,18 @@
 
     <p>Remplissez le formulaire ci-dessous, je vous répondrai dans les meilleurs délais.</p>
 
-    <form action="https://formsubmit.co/bysophiecreation@gmail.com" method="POST">
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
 
-        <!-- Configuration FormSubmit -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_subject" value="Nouveau message depuis le site By Sophie Créations">
-        <input type="hidden" name="_template" value="table">
+        <!-- Configuration Web3Forms -->
+<input type="hidden" name="access_key" value="4485a489-3fec-4f53-b05a-0da03957a04b">
+
+<input type="hidden" name="subject" value="Nouveau message depuis le site By Sophie Créations">
+
+<input type="hidden" name="from_name" value="By Sophie Créations">
+
+<input type="hidden" name="botcheck" style="display:none">
+
+<input type="hidden" name="replyto" id="replyto">
 
         <label for="nom">Nom</label>
         <input type="text" id="nom" name="Nom" required>
@@ -103,6 +109,56 @@ document.querySelectorAll("img").forEach(img=>{
     img.addEventListener("dragstart",e=>e.preventDefault());
 });
 </script>
+<script>
+// Permet de répondre directement au client
+document.getElementById("email").addEventListener("input", function () {
+    document.getElementById("replyto").value = this.value;
+});
 
+// Envoi du formulaire
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const bouton = contactForm.querySelector("button");
+
+    bouton.disabled = true;
+    bouton.textContent = "Envoi en cours...";
+
+    const formData = new FormData(contactForm);
+
+    try{
+
+        const response = await fetch("https://api.web3forms.com/submit",{
+            method:"POST",
+            body:formData
+        });
+
+        const result = await response.json();
+
+        if(result.success){
+
+            window.location.href="merci.html";
+
+        }else{
+
+            alert("Une erreur est survenue lors de l'envoi du message.");
+
+            bouton.disabled = false;
+            bouton.textContent = "📩 Envoyer le message";
+        }
+
+    }catch(error){
+
+        alert("Impossible d'envoyer le message.");
+
+        bouton.disabled = false;
+        bouton.textContent = "📩 Envoyer le message";
+    }
+
+});
+</script>
 </body>
 </html>
