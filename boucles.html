@@ -31,7 +31,10 @@ content="index,follow">
 </head>
 
 <body>
-
+<a href="monpanier.html" id="panierFixe">
+    🛒
+    <span id="nbArticles" class="badge-panier"></span>
+</a>
     <section class="hero">
 
     <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
@@ -46,10 +49,11 @@ content="index,follow">
 
     <a href="creations.html" class="btn retour">
         Retour aux créations
+    </a>
     <a href="monpanier.html" class="btn panier">
     Mon panier
 </a>
-    </a>
+    
 
 </section>
 
@@ -267,21 +271,8 @@ onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
 
 });
 
-function ajouterAuPanier(description, prix, photo) {
-
-    let panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-    panier.push({
-        description: description,
-        prix: prix,
-        photo: photo
-    });
-
-     localStorage.setItem("panier", JSON.stringify(panier));
 
 
-    alert("Article ajouté au panier !");
-}
 function afficherNotification(){
 
     const notif = document.getElementById("notificationPanier");
@@ -309,21 +300,7 @@ function ajouterAuPanier(description, prix, photo) {
 
     afficherNotification();
 }
-function mettreAJourPanier() {
 
-    const badge = document.getElementById("nbArticles");
-
-    if (!badge) return;
-
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-    if (panier.length > 0) {
-        badge.textContent = panier.length;
-        badge.style.display = "flex";
-    } else {
-        badge.style.display = "none";
-    }
-}
 </script>
 <script>
 document.addEventListener("contextmenu", function(e){
