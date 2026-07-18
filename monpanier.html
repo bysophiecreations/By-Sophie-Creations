@@ -32,7 +32,7 @@ content="index,follow">
 
 <body>
 <a href="monpanier.html" id="panierFixe">
-    🛒 <span id="nbArticles">0</span>
+    🛒 <span id="nbArticles" class="badge-panier"></span>
 </a>
 <section class="hero">
 
@@ -88,12 +88,20 @@ if (panier.length === 0) {
 }
 function passerCommande() {
 
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    function mettreAJourPanier() {
 
-    if (panier.length === 0) {
-        alert("Votre panier est vide.");
-        return;
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const compteur = document.getElementById("nbArticles");
+
+    if (panier.length > 0) {
+        compteur.textContent = panier.length;
+        compteur.style.display = "inline-flex";
+    } else {
+        compteur.style.display = "none";
     }
+}
+
+mettreAJourPanier();
 
     let commande = "Bonjour,%0D%0A%0D%0AJe souhaite commander :%0D%0A%0D%0A";
 
