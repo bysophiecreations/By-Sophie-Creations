@@ -120,9 +120,22 @@ function ajouterAuPanier(description, prix, photo) {
 
     localStorage.setItem("panier", JSON.stringify(panier));
 
-    mettreAJourPanier();
-
     alert("Article ajouté au panier !");
+}
+function mettreAJourPanier() {
+
+    const badge = document.getElementById("nbArticles");
+
+    if (!badge) return;
+
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    if (panier.length > 0) {
+        badge.textContent = panier.length;
+        badge.style.display = "flex";
+    } else {
+        badge.style.display = "none";
+    }
 }
 </script>
 <script>
