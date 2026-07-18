@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<a href="monpanier.html" class="btn panier">
-    🛒 Mon panier
-</a>
+
 <head>
     <meta property="og:title" content="By Sophie Créations">
 
@@ -33,7 +31,9 @@ content="index,follow">
 </head>
 
 <body>
-
+<a href="monpanier.html" id="panierFixe">
+    🛒 <span id="nbArticles">0</span>
+</a>
 <section class="hero">
 
     <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
@@ -57,9 +57,7 @@ content="index,follow">
     <a href="creations.html" class="btn retour">
         Continuer mes achats
     </a>
-    <a href="monpanier.html" class="btn panier">
-    🛒 Mon panier
-</a>
+   
 
 </section>
 
@@ -189,6 +187,23 @@ document.querySelectorAll("img").forEach(img => {
 </p>
 
 </footer>
+
+<script>
+function mettreAJourPanier() {
+
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const compteur = document.getElementById("nbArticles");
+
+    if (panier.length > 0) {
+        compteur.textContent = panier.length;
+        compteur.style.display = "inline";
+    } else {
+        compteur.style.display = "none";
+    }
+}
+
+mettreAJourPanier();
+</script>
 </body>
 </html>
 
