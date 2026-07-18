@@ -277,8 +277,10 @@ function ajouterAuPanier(description, prix, photo) {
         photo: photo
     });
 
-    localStorage.setItem("panier", JSON.stringify(panier));
-mettreAJourPanier();
+     localStorage.setItem("panier", JSON.stringify(panier));
+
+    mettreAJourPanier();
+
     alert("Article ajouté au panier !");
 }
 </script>
