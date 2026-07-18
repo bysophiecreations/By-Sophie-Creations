@@ -282,6 +282,33 @@ function ajouterAuPanier(description, prix, photo) {
 
     alert("Article ajouté au panier !");
 }
+function afficherNotification(){
+
+    const notif = document.getElementById("notificationPanier");
+
+    notif.classList.add("afficher");
+
+    setTimeout(() => {
+        notif.classList.remove("afficher");
+    },2000);
+
+}
+function ajouterAuPanier(description, prix, photo) {
+
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    panier.push({
+        description: description,
+        prix: prix,
+        photo: photo
+    });
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+
+    mettreAJourPanier();
+
+    afficherNotification();
+}
 function mettreAJourPanier() {
 
     const badge = document.getElementById("nbArticles");
@@ -394,4 +421,7 @@ function mettreAJourPanier() {
 mettreAJourPanier();
 </script>
 <script src="panier.js"></script>
+<div id="notificationPanier">
+    ✅ Article ajouté au panier
+</div>
 </html>
