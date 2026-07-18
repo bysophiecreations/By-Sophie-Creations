@@ -277,13 +277,17 @@ function afficherNotification(){
 
     const notif = document.getElementById("notificationPanier");
 
+    if (!notif) return;
+
     notif.classList.add("afficher");
 
-    setTimeout(() => {
+    setTimeout(function(){
         notif.classList.remove("afficher");
     },2000);
 
 }
+
+
 function ajouterAuPanier(description, prix, photo) {
 
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
@@ -307,7 +311,7 @@ document.addEventListener("contextmenu", function(e){
     e.preventDefault();
 });
 </script>
-</body>
+
 <script>
 document.onkeydown = function(e){
     if (e.keyCode == 123) {
@@ -401,4 +405,7 @@ mettreAJourPanier();
 <div id="notificationPanier">
     ✅ Article ajouté au panier
 </div>
+
+</body>
+
 </html>
