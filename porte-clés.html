@@ -78,9 +78,6 @@ const creations = [
 {photo:"PC20.jpg", description:"Cercle jaune avec ruche et abeille", prix:"4 €"},
 {photo:"PC21.jpg", description:"Tortue blanche sur la plage", prix:"3 €"},
 {photo:"PC22.jpg", description:"Levé de soleil sur un palmier", prix:"4 €"},
-{photo:"PC23.jpg", description:"Oval transparent avec arbre de vie blanc et inscription La vie est belle", prix:"4 €"},
-{photo:"PC24.jpg", description:"Oval jaune incrusté d'un mignon petit renard", prix:"4 €"},
-{photo:"PC25.jpg", description:"Oval jaune incrusté d'une fée et d'étoiles", prix:"3 €"},
 
 
 ];
@@ -121,21 +118,6 @@ function ajouterAuPanier(description, prix, photo) {
     localStorage.setItem("panier", JSON.stringify(panier));
 
     alert("Article ajouté au panier !");
-}
-function mettreAJourPanier() {
-
-    const badge = document.getElementById("nbArticles");
-
-    if (!badge) return;
-
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-    if (panier.length > 0) {
-        badge.textContent = panier.length;
-        badge.style.display = "flex";
-    } else {
-        badge.style.display = "none";
-    }
 }
 </script>
 <script>
@@ -215,23 +197,6 @@ document.querySelectorAll("img").forEach(img => {
 </p>
 
 </footer>
-<script>
-function mettreAJourPanier() {
-
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
-    const badge = document.getElementById("nbArticles");
-
-    if (panier.length > 0) {
-        badge.textContent = panier.length;
-        badge.style.display = "flex";
-    } else {
-        badge.style.display = "none";
-    }
-}
-
-mettreAJourPanier();
-</script>
-<script src="panier.js"></script>
 </body>
 </html>
 
