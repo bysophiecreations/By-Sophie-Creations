@@ -32,6 +32,11 @@ content="index,follow">
 
 <body>
 
+<a href="monpanier.html" id="panierFixe">
+    <span>🛒</span>
+    <span id="nbArticles" class="badge-panier"></span>
+</a>
+
 <section class="hero">
 
     <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
@@ -39,16 +44,17 @@ content="index,follow">
     <h1>Porte-clés</h1>
 
     <p>
-        Découvrez notre collection de porte-clés artisanaux.
+        Découvrez notre collection d'autres créations artisanales.
     </p>
 
     <div class="galerie-creations" id="galerie"></div>
 
     <a href="creations.html" class="btn retour">
         Retour aux créations
-     <a href="monpanier.html" class="btn panier">
+    </a>
+    <a href="monpanier.html" class="btn panier">
     Mon panier
-</a>   
+
     </a>
 
 </section>
@@ -57,22 +63,15 @@ content="index,follow">
 
 const creations = [
 
-    {photo:"PC1.jpg", description:"Diamant rouge", prix:"3 €"},
-    {photo:"PC2.jpg", description:"Coquillages sur le sable", prix:"5 €"},
-    {photo:"PC3.jpg", description:"Diamant blanc", prix:"3 €"},
-    {photo:"PC4.jpg", description:"Pièce de puzzle", prix:"3 €"},
-    {photo:"PC5.jpg", description:"Coquillage sur le sable", prix:"4 €"},
-    {photo:"PC6.jpg", description:"Porte-clé prénom", prix:"5 €"},
-    {photo:"PC7.jpg", description:"Papillon", prix:"3 € l'unité"},
-    {photo:"PC8.jpg", description:"Porte-clé personnalisable", prix:"5,50 €"},
-    {photo:"PC9.jpg", description:"Ourson bleu pailleté", prix:"3 €"},
-    {photo:"PC10.jpg", description:"Ourson transparent", prix:"3 €"},
-    {photo:"PC11.jpg", description:"Ourson transparent avec un noeud", prix:"3 €"},
-    {photo:"PC12.jpg", description:"Oval de cristal avec un coeur émeraude", prix:"2 €"},
-    {photo:"PC13.jpg", description:"Ourson vert kaki pailleté", prix:"3 €"},
-    {photo:"PC14.jpg", description:"Ourson rouge", prix:"3 €"},
-    {photo:"PC15.jpg", description:"Ourson vert", prix:"3 €"},
-    {photo:"PC16.jpg", description:"Etoile de mer sur le sable", prix:"3 €"},
+{photo:"PC1.jpg", description:"Diamant rouge", prix:"3 €"},
+{photo:"PC3.jpg", description:"Diamant blanc", prix:"3 €"},
+{photo:"PC4.jpg", description:"Pièce de puzzle", prix:"3 €"},
+{photo:"PC6.jpg", description:"Porte-clé prénom", prix:"5 €"},
+{photo:"PC7.jpg", description:"Papillon", prix:"3 € l'unité"},
+{photo:"PC8.jpg", description:"Porte-clé personnalisable", prix:"5,50 €"},
+{photo:"PC9.jpg", description:"Ourson bleu pailleté", prix:"3 €"},
+{photo:"PC12.jpg", description:"Oval de cristal avec un coeur émeraude", prix:"2 €"},
+{photo:"PC13.jpg", description:"Ourson vert kaki pailleté", prix:"3 €"},
 {photo:"PC17.jpg", description:"Coeur avec inscription LOVE dans un cercle transparent", prix:"3 €"},
 {photo:"PC19.jpg", description:"Cercle jaune ornée d'un lion", prix:"4 €"},
 {photo:"PC20.jpg", description:"Cercle jaune avec ruche et abeille", prix:"4 €"},
@@ -83,11 +82,12 @@ const creations = [
 {photo:"PC25.jpg", description:"Oval jaune incrusté d'une fée et d'étoiles", prix:"3 €"},
 
 
+
 ];
+
 // Mélange les créations
 creations.sort(() => Math.random() - 0.5);
 const galerie = document.getElementById("galerie");
-
 
 
 
@@ -99,7 +99,7 @@ creations.forEach(c => {
             <p class="description">${c.description}</p>
             <p class="prix">${c.prix}</p>
 
-           <button class="btn-panier"
+          <button class="btn-panier"
 onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
     Ajouter au panier
 </button>
@@ -118,25 +118,15 @@ function ajouterAuPanier(description, prix, photo) {
         photo: photo
     });
 
-    localStorage.setItem("panier", JSON.stringify(panier));
+   localStorage.setItem("panier", JSON.stringify(panier));
 
-    alert("Article ajouté au panier !");
+mettreAJourPanier();
+
+alert("Article ajouté au panier !");
 }
-function mettreAJourPanier() {
 
-    const badge = document.getElementById("nbArticles");
 
-    if (!badge) return;
 
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-    if (panier.length > 0) {
-        badge.textContent = panier.length;
-        badge.style.display = "flex";
-    } else {
-        badge.style.display = "none";
-    }
-}
 </script>
 <script>
 document.addEventListener("contextmenu", function(e){
@@ -215,6 +205,8 @@ document.querySelectorAll("img").forEach(img => {
 </p>
 
 </footer>
+
+
 <script>
 function mettreAJourPanier() {
 
@@ -231,7 +223,6 @@ function mettreAJourPanier() {
 
 mettreAJourPanier();
 </script>
-<script src="panier.js"></script>
 </body>
 </html>
 
