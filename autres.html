@@ -98,6 +98,21 @@ onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
 
 });
 
+function afficherNotification(){
+
+    const notif = document.getElementById("notificationPanier");
+
+    if (!notif) return;
+
+    notif.classList.add("afficher");
+
+    setTimeout(function(){
+        notif.classList.remove("afficher");
+    },2000);
+
+}
+
+
 function ajouterAuPanier(description, prix, photo) {
 
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
@@ -108,12 +123,13 @@ function ajouterAuPanier(description, prix, photo) {
         photo: photo
     });
 
-   localStorage.setItem("panier", JSON.stringify(panier));
+    localStorage.setItem("panier", JSON.stringify(panier));
 
-mettreAJourPanier();
+    mettreAJourPanier();
 
-alert("Article ajouté au panier !");
+    afficherNotification();
 }
+
 
 
 
@@ -213,6 +229,9 @@ function mettreAJourPanier() {
 
 mettreAJourPanier();
 </script>
+<div id="notificationPanier">
+    ✅ Article ajouté au panier
+</div>
 </body>
 </html>
 
