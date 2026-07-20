@@ -595,45 +595,27 @@ form button{
     margin-top:25px;
     width:100%;
 }
-#panierFixe{
+.badge-panier {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#panierFixe {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 65px;
-    height: 65px;
-    background: #d81b60;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    font-size: 30px;
-    color: white;
-    z-index: 999999;
-    box-shadow: 0 6px 20px rgba(0,0,0,.30);
 }
-
-#panierFixe:hover{
-    transform:scale(1.1);
-}
-
-.badge-panier{
-    position:absolute;
-    top:-6px;
-    right:-6px;
-    min-width:24px;
-    height:24px;
-    background:red;
-    color:white;
-    border-radius:50%;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    font-size:12px;
-    font-weight:bold;
-    border:2px solid #fff;
-}
-/* Notification d'ajout au panier */
 
 #notificationPanier{
     position:fixed;
