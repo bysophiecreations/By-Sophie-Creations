@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta property="og:title" content="By Sophie Créations">
+<head><meta property="og:title" content="By Sophie Créations">
 
 <meta property="og:description"
 content="Créations artisanales en résine et bijoux personnalisés">
@@ -32,11 +31,6 @@ content="index,follow">
 
 <body>
 
-<a href="monpanier.html" id="panierFixe">
-    <span>🛒</span>
-    <span id="nbArticles" class="badge-panier"></span>
-</a>
-
 <section class="hero">
 
     <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
@@ -44,14 +38,14 @@ content="index,follow">
     <h1>Pendentifs</h1>
 
     <p>
-        Découvrez notre collection d'autres créations artisanales.
+        Découvrez notre collection de pendentifs artisanaux.
     </p>
 
     <div class="galerie-creations" id="galerie"></div>
 
     <a href="creations.html" class="btn retour">
         Retour aux créations
-    </a>
+</a>
     <a href="monpanier.html" class="btn panier">
     Mon panier
 
@@ -63,20 +57,27 @@ content="index,follow">
 
 const creations = [
 
-{photo:"P2.jpg", description:"Cercle bleu avec feuille d'or", prix:"5 €"},
-{photo:"P3.jpg", description:"Cadre bleu incrusté de feuilles d'or", prix:"10 €"},
-{photo:"P12.jpg", description:"Coeur rouge pailleté", prix:"12 €"},
+    {photo:"P1.jpg", description:"Coquillage sur lit de sable", prix:"8 €"},
+    {photo:"P2.jpg", description:"Cercle bleu avec feuille d'or", prix:"5 €"},
+    {photo:"P3.jpg", description:"Cadre bleu incrusté de feuilles d'or", prix:"10 €"},
+    {photo:"P4.jpg", description:"Etoile sur le sable", prix:"10 €"},
+    {photo:"P7.jpg", description:"Etoile de mer sur sable avec feuille d'or", prix:"10 €"},
+    {photo:"P8.jpg", description:"Larme transparente avec coquillage", prix:"8 €"},
+{photo:"P9.jpg", description:"Cadre bleu avec feuille dorée", prix:"10 €"},
+    {photo:"P10.jpg", description:"Cadre transparent avec coquillages et feuilles d'or", prix:"10 €"},
+    {photo:"P11.jpg", description:"Coeur de mousse", prix:"5 €"},
+    {photo:"P12.jpg", description:"Coeur rouge pailleté", prix:"12 €"},
 {photo:"P13.jpg", description:"Cadre bleu pailleté avec feuille dorée", prix:"7 €"},
-{photo:"P14.jpg", description:"Cadre transparent avec vagues bleues et feuille dorée", prix:"12 €"},
-{photo:"P15.jpg", description:"Pomme verte avec serpentins métalliques", prix:"6 €"},
-{photo:"P16.jpg", description:"Cadre rectangulaire transparent avec vagues bleues", prix:"5 €"},
+    {photo:"P14.jpg", description:"Cadre transparent avec vagues bleues et feuille dorée", prix:"12 €"},
+    {photo:"P15.jpg", description:"Pomme verte avec serpentins métalliques", prix:"6 €"},
+    {photo:"P16.jpg", description:"Cadre rectangulaire transparent avec vagues bleues", prix:"5 €"},
 {photo:"P17.jpg", description:"Larme marron clair et sa torsade dorée", prix:"7 €"},
-{photo:"P18.jpg", description:"Cercle blanc et tourbillon métallique", prix:"6 €"},
-{photo:"P19.jpg", description:"Larme rouge pailletée avec feuille dorée, sertie dans un cadre doré", prix:"10 €"},
-{photo:"P20.jpg", description:"Rectangle vert clair avec fissures et feuilles d'or", prix:"9 €"},
-{photo:"P22.jpg", description:"Cercle rouge pailleté et sa feuille dorée", prix:"10 €"},
-{photo:"P23.jpg", description:"Larme orangée sous tourbillon métallique", prix:"3 €"},
-{photo:"P24.jpg", description:"Description du pendentif 4", prix:"5 €"},
+    {photo:"P18.jpg", description:"Cercle blanc et tourbillon métallique", prix:"6 €"},
+    {photo:"P19.jpg", description:"Larme rouge pailletée avec feuille dorée, sertie dans un cadre doré", prix:"10 €"},
+    {photo:"P20.jpg", description:"Rectangle vert clair avec fissures et feuilles d'or", prix:"9 €"},
+    {photo:"P22.jpg", description:"Cercle rouge pailleté et sa feuille dorée", prix:"10 €"},
+    {photo:"P23.jpg", description:"Larme orangée sous tourbillon métallique", prix:"3 €"},
+    {photo:"P24.jpg", description:"Description du pendentif 4", prix:"5 €"},
 {photo:"Parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
 {photo:"Parure2.jpg", description:"Parure complète couleur en forme de larme marron clair assorti de coquillages", prix:"15 €"},
 {photo:"P25.jpg", description:"Pendentif orné d'une marguerite et d'une boule avec un zirconium", prix:"8 €"},
@@ -90,36 +91,37 @@ const creations = [
 {photo:"P32.jpg", description:"Rectangle blanc rosé avec papillon et étoile", prix:"10 €"},
 {photo:"Parure6.jpg", description:"Parure rose pailletée et soleil doré", prix:"12 €"},
 {photo:"Parure7.jpg", description:"Parure boucles + pendentif Larme rouge avec soleil et feuille argentés", prix:"15 €"},
-{photo:"Parure8.jpg", description:"Parure boucles + pendentif Cercle bleu incrusté de fleurs blanches avec une fleur argentée", prix:"10 €"},
+ {photo:"Parure8.jpg", description:"Parure boucles + pendentif Cercle bleu incrusté de fleurs blanches avec une fleur argentée", prix:"10 €"},
 {photo:"P33.jpg", description:"Perle de résine turquoise et sa fleur dorée", prix:"10 €"},
 
 
-];
 
-// Mélange les créations
+]
 creations.sort(() => Math.random() - 0.5);
+
 const galerie = document.getElementById("galerie");
 
 
 
 creations.forEach(c => {
 
-    galerie.innerHTML += `
-        <div class="creation">
-            <img src="images/${c.photo}" alt="${c.description}">
-            <p class="description">${c.description}</p>
-            <p class="prix">${c.prix}</p>
 
-          <button class="btn-panier"
-onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
-    Ajouter au panier
-</button>
-        </div>
-    `;
+galerie.innerHTML += `
+    <div class="creation" id="${c.id || ''}">
+        <img src="images/${c.photo}" alt="${c.description}">
+        <p class="description">${c.description}</p>
+        <p class="prix">${c.prix}</p>
 
+        <button class="btn-panier"
+            onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
+            Ajouter au panier
+        </button>
+    </div>
+`;
 });
 
-function afficherNotification() {
+
+function afficherNotification(){
 
     const notif = document.getElementById("notificationPanier");
 
@@ -127,10 +129,12 @@ function afficherNotification() {
 
     notif.classList.add("afficher");
 
-    setTimeout(() => {
+    setTimeout(function(){
         notif.classList.remove("afficher");
-    }, 2000);
+    },2000);
+
 }
+
 
 function ajouterAuPanier(description, prix, photo) {
 
@@ -149,8 +153,6 @@ function ajouterAuPanier(description, prix, photo) {
     afficherNotification();
 }
 
-
-
 </script>
 <script>
 document.addEventListener("contextmenu", function(e){
@@ -158,23 +160,18 @@ document.addEventListener("contextmenu", function(e){
 });
 </script>
 <script>
-document.onkeydown = function(e){
-    if (e.keyCode == 123) {
-        return false;
+document.addEventListener("keydown", function(e){
+    if (e.key === "F12") e.preventDefault();
+
+    if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
+        e.preventDefault();
     }
 
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-        return false;
+    if (e.ctrlKey && e.key === "U") {
+        e.preventDefault();
     }
+});
 
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-        return false;
-    }
-
-    if (e.ctrlKey && e.keyCode == 85) {
-        return false;
-    }
-}
 </script>
 <script>
 
@@ -189,23 +186,8 @@ e.preventDefault();
 });
 
 </script>
-<script>
 
-document.addEventListener("contextmenu", function(e){
-    e.preventDefault();
-});
 
-document.querySelectorAll("img").forEach(img => {
-
-    img.setAttribute("draggable","false");
-
-    img.addEventListener("dragstart", function(e){
-        e.preventDefault();
-    });
-
-});
-
-</script>
 <footer>
 
 <hr>
@@ -229,8 +211,6 @@ document.querySelectorAll("img").forEach(img => {
 </p>
 
 </footer>
-
-
 <script>
 function mettreAJourPanier() {
 
@@ -247,6 +227,9 @@ function mettreAJourPanier() {
 
 mettreAJourPanier();
 </script>
+<script src="panier.js"></script>
+<div id="notificationPanier">
+    ✅ Article ajouté au panier
+</div>
 </body>
 </html>
-

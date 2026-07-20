@@ -23,6 +23,17 @@ content="By Sophie Créations">
 
 <meta name="robots"
 content="index,follow">
+    <meta name="description"
+content="By Sophie Créations - Créations artisanales en résine : boucles d'oreilles, bracelets, pendentifs, porte-clés et créations personnalisées.">
+
+<meta name="keywords"
+content="bijoux résine, créations artisanales, boucles d'oreilles, bracelets, pendentifs, porte-clés, créations personnalisées">
+
+<meta name="author"
+content="By Sophie Créations">
+
+<meta name="robots"
+content="index,follow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bracelets - By Sophie Créations</title>
@@ -32,11 +43,6 @@ content="index,follow">
 
 <body>
 
-<a href="monpanier.html" id="panierFixe">
-    <span>🛒</span>
-    <span id="nbArticles" class="badge-panier"></span>
-</a>
-
 <section class="hero">
 
     <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
@@ -44,7 +50,7 @@ content="index,follow">
     <h1>Bracelets</h1>
 
     <p>
-        Découvrez notre collection d'autres créations artisanales.
+        Découvrez notre collection de bracelets artisanaux.
     </p>
 
     <div class="galerie-creations" id="galerie"></div>
@@ -52,9 +58,9 @@ content="index,follow">
     <a href="creations.html" class="btn retour">
         Retour aux créations
     </a>
-    <a href="monpanier.html" class="btn panier">
-    Mon panier
 
+    <a href="monpanier.html" class="btn panier">
+        Mon panier
     </a>
 
 </section>
@@ -63,22 +69,20 @@ content="index,follow">
 
 const creations = [
 
-{photo:"B1.jpg", description:"Bracelet forme de fleur orange", prix:"5 €"},
-{photo:"B2.jpg", description:"Coeur rouge pailleté dans son encadrement métallique", prix:"6 €"},
-{photo:"B3.jpg", description:"Cercle jaune avec un soleil noir", prix:"4 €"},
-{photo:"Parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
-{photo:"Parure2.jpg", description:"Parure complète en forme de larme marron clair assortie de coquillages", prix:"15 €"},
+    {photo:"B1.jpg", description:"Bracelet forme de fleur orange", prix:"5 €"},
+    {photo:"B2.jpg", description:"Coeur rouge pailleté dans son encadrement métallique", prix:"6 €"},
+    {photo:"B3.jpg", description:"Cercle jaune avec un soleil noir", prix:"4 €"},
+   {photo:"Parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
+    {photo:"Parure2.jpg", description:"Parure complète en forme de larme marron clair assortie de coquillages", prix:"15 €"},
 {photo:"B4.jpg", description:"Coeur jaune pailleté", prix:"2 €"},
 {photo:"Parure3.jpg", description:"Parure boucles et bracelet de fleur bleue des iles", prix:"6 €"},
-{photo:"B5.jpg", description:"Perles en résine turquoise et fleurs dorées", prix:"6 €"},
+ {photo:"B5.jpg", description:"Perles en résine turquoise et fleurs dorées", prix:"6 €"},
  
+  
 ];
-
-// Mélange les créations
+  // Mélange les créations
 creations.sort(() => Math.random() - 0.5);
 const galerie = document.getElementById("galerie");
-
-
 
 creations.forEach(c => {
 
@@ -88,16 +92,16 @@ creations.forEach(c => {
             <p class="description">${c.description}</p>
             <p class="prix">${c.prix}</p>
 
-          <button class="btn-panier"
-onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
-    Ajouter au panier
-</button>
+            <button class="btn-panier"
+                onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
+                Ajouter au panier
+            </button>
         </div>
     `;
 
 });
 
-function afficherNotification() {
+function afficherNotification(){
 
     const notif = document.getElementById("notificationPanier");
 
@@ -105,10 +109,12 @@ function afficherNotification() {
 
     notif.classList.add("afficher");
 
-    setTimeout(() => {
+    setTimeout(function(){
         notif.classList.remove("afficher");
-    }, 2000);
+    },2000);
+
 }
+
 
 function ajouterAuPanier(description, prix, photo) {
 
@@ -126,8 +132,6 @@ function ajouterAuPanier(description, prix, photo) {
 
     afficherNotification();
 }
-
-
 
 </script>
 <script>
@@ -207,8 +211,6 @@ document.querySelectorAll("img").forEach(img => {
 </p>
 
 </footer>
-
-
 <script>
 function mettreAJourPanier() {
 
@@ -225,6 +227,10 @@ function mettreAJourPanier() {
 
 mettreAJourPanier();
 </script>
+<script src="panier.js"></script>
+<div id="notificationPanier">
+    ✅ Article ajouté au panier
+</div>
 </body>
 </html>
 
