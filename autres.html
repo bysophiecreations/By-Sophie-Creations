@@ -31,14 +31,6 @@ content="index,follow">
 </head>
 
 <body>
-   
-
-<a href="monpanier.html" id="panierFixe">
-    <span>🛒</span>
-    <span id="nbArticles" class="badge-panier"></span>
-</a>
-
-
 
 <section class="hero">
 
@@ -108,11 +100,9 @@ function ajouterAuPanier(description, prix, photo) {
         photo: photo
     });
 
-   localStorage.setItem("panier", JSON.stringify(panier));
+    localStorage.setItem("panier", JSON.stringify(panier));
 
-mettreAJourPanier();
-
-alert("Article ajouté au panier !");
+    alert("Article ajouté au panier !");
 }
 
 
@@ -195,24 +185,6 @@ document.querySelectorAll("img").forEach(img => {
 </p>
 
 </footer>
-
-
-<script>
-function mettreAJourPanier() {
-
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
-    const badge = document.getElementById("nbArticles");
-
-    if (panier.length > 0) {
-        badge.textContent = panier.length;
-        badge.style.display = "flex";
-    } else {
-        badge.style.display = "none";
-    }
-}
-
-mettreAJourPanier();
-</script>
 </body>
 </html>
 
