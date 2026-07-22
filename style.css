@@ -594,6 +594,7 @@ form textarea{
 form button{
     margin-top:25px;
     width:100%;
+
 }
 .badge-panier {
     position: absolute;
@@ -696,4 +697,5 @@ form button{
 .retour{
     display: inline-block;
     margin-top: 60px; /* ou 80px si tu veux encore plus d'espace */
+
 }
