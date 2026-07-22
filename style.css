@@ -594,7 +594,6 @@ form textarea{
 form button{
     margin-top:25px;
     width:100%;
-
 }
 .badge-panier {
     position: absolute;
@@ -621,13 +620,16 @@ form button{
 #notificationPanier{
     position:fixed;
     bottom:20px;
-    right:20px;
+    left:50%;
+    transform:translateX(-50%);
     background:#4CAF50;
-    color:#fffefe;
+    color:white;
     padding:12px 20px;
-    border-radius:8px;
-   display: none;
-    z-index: 9999;
+    border-radius:10px;
+    display:none;
+    z-index:99999;
+    text-align:center;
+    max-width:90%;
 }
 
 #notificationPanier.afficher {
@@ -697,5 +699,20 @@ form button{
 .retour{
     display: inline-block;
     margin-top: 60px; /* ou 80px si tu veux encore plus d'espace */
+}
+@media (max-width: 768px) {
+
+    #panierFixe{
+        top: 15px;
+        right: 15px;
+        z-index: 9999;
+        font-size: 28px;
+    }
+
+    .badge-panier{
+        width:22px;
+        height:22px;
+        font-size:12px;
+    }
 
 }
