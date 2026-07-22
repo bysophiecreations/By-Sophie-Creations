@@ -632,3 +632,35 @@ form button{
 #notificationPanier.afficher {
     display: block;
 }
+.message-accueil{
+    max-width:900px;
+    margin:60px auto;
+    padding:30px;
+
+    background:rgba(255,255,255,0.9);
+
+    border:3px solid #B8860B;
+    border-radius:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+    text-align:center;
+}
+
+.message-accueil h2{
+    color:#8B6508;
+    margin-bottom:20px;
+}
+
+.message-accueil p{
+    color:#444;
+    line-height:1.8;
+    margin-bottom:15px;
+    font-size:1.05rem;
+}
+
+.signature{
+    color:#B8860B;
+    font-weight:bold;
+    font-size:1.1rem;
+}
