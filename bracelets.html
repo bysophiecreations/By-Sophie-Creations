@@ -42,7 +42,10 @@ content="index,follow">
 </head>
 
 <body>
-
+<a href="monpanier.html" id="panierFixe">
+    🛒
+    <span id="nbArticles" class="badge-panier"></span>
+</a>
 <section class="hero">
 
     <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
@@ -69,13 +72,21 @@ content="index,follow">
 
 const creations = [
 
-    {photo:"B1.jpg", description:"Bracelet forme de fleur orange", prix:"5 €"},
-    {photo:"B2.jpg", description:"Coeur rouge pailleté dans son encadrement métallique", prix:"6 €"},
-    {photo:"B3.jpg", description:"Cercle jaune avec un soleil noir", prix:"4 €"},
-   {photo:"Parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
-    {photo:"Parure2.jpg", description:"Parure complète en forme de larme marron clair assortie de coquillages", prix:"15 €"},
+{photo:"B1.jpg", description:"Bracelet forme de fleur orange", prix:"5 €"},
+{photo:"B2.jpg", description:"Coeur rouge pailleté dans son encadrement métallique", prix:"6 €"},
+{photo:"B3.jpg", description:"Cercle jaune avec un soleil noir", prix:"4 €"},
+{photo:"Parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
+{photo:"Parure2.jpg", description:"Parure complète en forme de larme marron clair assortie de coquillages", prix:"15 €"},
 {photo:"B4.jpg", description:"Coeur jaune pailleté", prix:"2 €"},
-  
+{photo:"Parure3.jpg", description:"Parure boucles et bracelet de fleur bleue des iles", prix:"6 €"},
+{photo:"B5.jpg", description:"Perles en résine turquoise et fleurs dorées", prix:"6 €"},
+{photo:"B6.jpg", description:"Perle en résine rose", prix:"2 € le bracelet"},
+{photo:"B7.jpg", description:"Perle en résine rouge avec fleurs argentées", prix:"5 €"},
+{photo:"B8.jpg", description:"Perles en résine vertes avec feuille argentée", prix:"5 €"},
+{photo:"B9.jpg", description:"Perles en résine vertes avec fleurs argentées", prix:"5 €"},
+ {photo:"B10.jpg", description:"Perles en résine blanches avec feuille argentée", prix:"5 €"},
+{photo:"B11.jpg", description:"Perles en résine roses et leurs fleurs rosées", prix:"6 €"},
+ 
   
 ];
   // Mélange les créations
@@ -99,6 +110,21 @@ creations.forEach(c => {
 
 });
 
+function afficherNotification(){
+
+    const notif = document.getElementById("notificationPanier");
+
+    if (!notif) return;
+
+    notif.classList.add("afficher");
+
+    setTimeout(function(){
+        notif.classList.remove("afficher");
+    },2000);
+
+}
+
+
 function ajouterAuPanier(description, prix, photo) {
 
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
@@ -111,7 +137,9 @@ function ajouterAuPanier(description, prix, photo) {
 
     localStorage.setItem("panier", JSON.stringify(panier));
 
-    alert("Article ajouté au panier !");
+    mettreAJourPanier();
+
+    afficherNotification();
 }
 
 </script>
@@ -192,6 +220,26 @@ document.querySelectorAll("img").forEach(img => {
 </p>
 
 </footer>
+<script>
+function mettreAJourPanier() {
+
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const badge = document.getElementById("nbArticles");
+
+    if (panier.length > 0) {
+        badge.textContent = panier.length;
+        badge.style.display = "flex";
+    } else {
+        badge.style.display = "none";
+    }
+}
+
+mettreAJourPanier();
+</script>
+<script src="panier.js"></script>
+<div id="notificationPanier">
+    ✅ Article ajouté au panier
+</div>
 </body>
 </html>
 
