@@ -664,3 +664,34 @@ form button{
     font-weight:bold;
     font-size:1.1rem;
 }
+.btn-retour-presentation{
+    display: inline-block;
+    margin-top: 60px;
+}
+.encadre-presentation{
+    max-width:900px;
+    margin:50px auto;
+    padding:35px;
+
+    background:rgba(255,255,255,0.92);
+
+    border:3px solid #B8860B;
+    border-radius:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+    text-align:center;
+}
+
+.encadre-presentation h2{
+    color:#8B6508;
+    font-size:2rem;
+    margin-bottom:35px;   /* espace sous le titre */
+}
+
+.encadre-presentation p{
+    font-size:1.1rem;
+    line-height:1.9;
+    margin-bottom:22px;
+    color:#444;
+}
