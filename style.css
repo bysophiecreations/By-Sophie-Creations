@@ -637,7 +637,7 @@ form button{
     margin:60px auto;
     padding:30px;
 
-    background:rgba(255,255,255,0.9);
+    background:#FFF8E8;
 
     border:3px solid #B8860B;
     border-radius:25px;
@@ -664,16 +664,14 @@ form button{
     font-weight:bold;
     font-size:1.1rem;
 }
-.btn-retour-presentation{
-    display: inline-block;
-    margin-top: 60px;
-}
+
+
 .encadre-presentation{
     max-width:900px;
     margin:50px auto;
     padding:35px;
 
-    background:rgba(255,255,255,0.92);
+    background: #FFF8E8;
 
     border:3px solid #B8860B;
     border-radius:25px;
@@ -694,4 +692,8 @@ form button{
     line-height:1.9;
     margin-bottom:22px;
     color:#444;
+}
+.retour{
+    display: inline-block;
+    margin-top: 60px; /* ou 80px si tu veux encore plus d'espace */
 }
