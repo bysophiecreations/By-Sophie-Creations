@@ -87,8 +87,8 @@ p {
 /* STYLE COMMUN DES BULLES */
 
 .forme {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
 
     position: relative;
 
@@ -422,21 +422,35 @@ p {
     transition: 0.3s;
 }
 
-.creation:hover {
-    transform: translateY(-5px);
+.creation{
+    width:180px;
+    background:rgba(255,255,255,0.95);
+    border-radius:20px;
+    padding:10px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    overflow:hidden;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* PHOTO */
+.creation:hover{
+    transform: scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
 
-.creation img {
-    width: 100%;
-    height: 280px;
+.creation img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:8px;
 
-    object-fit: cover;
+    transition: transform 0.3s ease;
+}
 
-    border-radius: 15px;
-
-    margin-bottom: 10px;
+.creation:hover img{
+    transform: scale(1.08);
 }
 
 /* NOM DE LA CRÉATION */
@@ -458,9 +472,9 @@ p {
 
     line-height: 1.4;
 
-    min-height: 60px;
+    min-height: 0;
 
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 /* PRIX */
@@ -472,7 +486,7 @@ p {
 
     font-weight: bold;
 
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 /* VERSION MOBILE */
@@ -637,8 +651,8 @@ form button{
 }
 .message-accueil{
     max-width:900px;
-    margin:60px auto;
-    padding:30px;
+    margin:40px auto;
+    padding:20px;
 
     background:#FFF8E8;
 
@@ -652,13 +666,13 @@ form button{
 
 .message-accueil h2{
     color:#8B6508;
-    margin-bottom:20px;
+    margin-bottom:12px;
 }
 
 .message-accueil p{
     color:#444;
-    line-height:1.8;
-    margin-bottom:15px;
+    line-height:1.6;
+    margin-bottom:12px;
     font-size:1.05rem;
 }
 
@@ -715,4 +729,44 @@ form button{
         font-size:12px;
     }
 
+}
+.popup-produit{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    z-index:99999;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-produit.afficher{
+    display:flex;
+}
+
+.popup-contenu{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    width:90%;
+    max-width:500px;
+    position:relative;
+}
+
+.popup-contenu img{
+    width:100%;
+    max-height:450px;
+    object-fit:contain;
+    border-radius:15px;
+}
+
+.fermerPopup{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:35px;
+    cursor:pointer;
+    color:#B8860B;
 }

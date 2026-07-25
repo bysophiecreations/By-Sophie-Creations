@@ -25,22 +25,23 @@ content="By Sophie Créations">
 content="index,follow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autres créations - By Sophie Créations</title>
+    <title>Porte-clés - By Sophie Créations</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-   
+
 <a href="monpanier.html" id="panierFixe">
-    🛒
+    <span>🛒</span>
     <span id="nbArticles" class="badge-panier"></span>
 </a>
+
 <section class="hero">
 
     <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
 
-    <h1>Autres créations</h1>
+    <h1>Porte-clés</h1>
 
     <p>
         Découvrez notre collection d'autres créations artisanales.
@@ -62,9 +63,26 @@ content="index,follow">
 
 const creations = [
 
-{photo:"A1.jpg", description:"Jeu du morpion", prix:"6 €"},
-{photo:"A2.jpg", description:"Tête de mort", prix:"5 €"},
-{photo:"A5.jpg", description:"Marque page avec inscription", prix:"5 €"},
+{photo:"PC1.jpg", description:"Diamant rouge", prix:"3 €"},
+{photo:"PC3.jpg", description:"Diamant blanc", prix:"3 €"},
+{photo:"PC4.jpg", description:"Pièce de puzzle", prix:"3 €"},
+{photo:"PC6.jpg", description:"Porte-clé prénom", prix:"5 €"},
+{photo:"PC7.jpg", description:"Papillon", prix:"3 € l'unité"},
+{photo:"PC8.jpg", description:"Porte-clé personnalisable", prix:"5,50 €"},
+{photo:"PC9.jpg", description:"Ourson bleu pailleté", prix:"3 €"},
+{photo:"PC12.jpg", description:"Oval de cristal avec un coeur émeraude", prix:"2 €"},
+{photo:"PC13.jpg", description:"Ourson vert kaki pailleté", prix:"3 €"},
+{photo:"PC14.jpg", description:"Ourson rouge", prix:"3 €"},
+{photo:"PC16.jpg", description:"Etoile de mer sur le sable", prix:"3 €"},
+{photo:"PC17.jpg", description:"Coeur avec inscription LOVE dans un cercle transparent", prix:"3 €"},
+{photo:"PC19.jpg", description:"Cercle jaune ornée d'un lion", prix:"4 €"},
+{photo:"PC20.jpg", description:"Cercle jaune avec ruche et abeille", prix:"4 €"},
+{photo:"PC21.jpg", description:"Tortue blanche sur la plage", prix:"3 €"},
+{photo:"PC22.jpg", description:"Levé de soleil sur un palmier", prix:"4 €"},
+{photo:"PC23.jpg", description:"Oval transparent avec arbre de vie blanc et inscription La vie est belle", prix:"4 €"},
+{photo:"PC24.jpg", description:"Oval jaune incrusté d'un mignon petit renard", prix:"4 €"},
+{photo:"PC25.jpg", description:"Oval jaune incrusté d'une fée et d'étoiles", prix:"3 €"},
+
 
 
 ];
@@ -79,10 +97,7 @@ creations.forEach(c => {
 
     galerie.innerHTML += `
         <div class="creation">
-         <img src="images/${c.photo}"
-     alt="${c.description}"
-     class="photo-produit"
-     onclick="event.stopPropagation(); ouvrirProduit('${c.photo}','${c.description}','${c.prix}')">
+            <img src="images/${c.photo}" alt="${c.description}">
             <p class="description">${c.description}</p>
             <p class="prix">${c.prix}</p>
 
@@ -95,21 +110,6 @@ onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
 
 });
 
-function afficherNotification(){
-
-    const notif = document.getElementById("notificationPanier");
-
-    if (!notif) return;
-
-    notif.classList.add("afficher");
-
-    setTimeout(function(){
-        notif.classList.remove("afficher");
-    },2000);
-
-}
-
-
 function ajouterAuPanier(description, prix, photo) {
 
     let panier = JSON.parse(localStorage.getItem("panier")) || [];
@@ -120,34 +120,12 @@ function ajouterAuPanier(description, prix, photo) {
         photo: photo
     });
 
-    localStorage.setItem("panier", JSON.stringify(panier));
+   localStorage.setItem("panier", JSON.stringify(panier));
 
-    mettreAJourPanier();
+mettreAJourPanier();
 
-    afficherNotification();
+alert("Article ajouté au panier !");
 }
-
-let produitSelectionne = null;
-
-function ouvrirProduit(photo, description, prix){
-
-    produitSelectionne = {photo, description, prix};
-
-    document.getElementById("popupImage").src="images/"+photo;
-    document.getElementById("popupTitre").textContent=description;
-    document.getElementById("popupPrix").textContent=prix;
-
-    document.getElementById("popupProduit").classList.add("afficher");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    document.querySelector(".fermerPopup").addEventListener("click", function () {
-        document.getElementById("popupProduit").classList.remove("afficher");
-    });
-
-});
-
 
 
 
@@ -246,57 +224,6 @@ function mettreAJourPanier() {
 }
 
 mettreAJourPanier();
-</script>
-<script src="panier.js"></script>
-<div id="notificationPanier">
-    ✅ Article ajouté au panier
-</div>
-<div id="popupProduit" class="popup-produit">
-
-    <div class="popup-contenu">
-
-        <span class="fermerPopup">&times;</span>
-
-        <img id="popupImage" src="" alt="">
-
-        <h2 id="popupTitre"></h2>
-
-        <p id="popupPrix"></p>
-
-        <button id="popupPanier" class="btn-panier">
-            Ajouter au panier
-        </button>
-
-    </div>
-
-</div>
-<script>
-const popup = document.getElementById("popupProduit");
-const boutonPopup = document.getElementById("popupPanier");
-const fermer = document.querySelector(".fermerPopup");
-
-fermer.addEventListener("click", () => {
-    popup.classList.remove("afficher");
-});
-
-popup.addEventListener("click", (e) => {
-    if (e.target === popup) {
-        popup.classList.remove("afficher");
-    }
-});
-
-boutonPopup.addEventListener("click", () => {
-
-    if (!produitSelectionne) return;
-
-    ajouterAuPanier(
-        produitSelectionne.description,
-        produitSelectionne.prix,
-        produitSelectionne.photo
-    );
-
-    popup.classList.remove("afficher");
-});
 </script>
 </body>
 </html>

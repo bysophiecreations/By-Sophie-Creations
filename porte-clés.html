@@ -94,7 +94,10 @@ creations.forEach(c => {
 
     galerie.innerHTML += `
         <div class="creation">
-            <img src="images/${c.photo}" alt="${c.description}">
+            <img src="images/${c.photo}"
+     alt="${c.description}"
+     class="photo-produit"
+     onclick="event.stopPropagation(); ouvrirProduit('${c.photo}','${c.description}','${c.prix}')">
             <p class="description">${c.description}</p>
             <p class="prix">${c.prix}</p>
 
@@ -138,6 +141,29 @@ function ajouterAuPanier(description, prix, photo) {
 
     afficherNotification();
 }
+let produitSelectionne = null;
+
+function ouvrirProduit(photo, description, prix){
+
+    produitSelectionne = {photo, description, prix};
+
+    document.getElementById("popupImage").src="images/"+photo;
+    document.getElementById("popupTitre").textContent=description;
+    document.getElementById("popupPrix").textContent=prix;
+
+    document.getElementById("popupProduit").classList.add("afficher");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelector(".fermerPopup").addEventListener("click", function () {
+        document.getElementById("popupProduit").classList.remove("afficher");
+    });
+
+});
+
+
+
 </script>
 <script>
 document.addEventListener("contextmenu", function(e){
@@ -230,11 +256,60 @@ function mettreAJourPanier() {
     }
 }
 </script>
+<script>
 mettreAJourPanier();
+</script>
 <script src="panier.js"></script>
 <div id="notificationPanier">
     ✅ Article ajouté au panier
 </div>
+<div id="popupProduit" class="popup-produit">
+
+    <div class="popup-contenu">
+
+        <span class="fermerPopup">&times;</span>
+
+        <img id="popupImage" src="" alt="">
+
+        <h2 id="popupTitre"></h2>
+
+        <p id="popupPrix"></p>
+
+        <button id="popupPanier" class="btn-panier">
+            Ajouter au panier
+        </button>
+
+    </div>
+
+</div>
+<script>
+const popup = document.getElementById("popupProduit");
+const boutonPopup = document.getElementById("popupPanier");
+const fermer = document.querySelector(".fermerPopup");
+
+fermer.addEventListener("click", () => {
+    popup.classList.remove("afficher");
+});
+
+popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+        popup.classList.remove("afficher");
+    }
+});
+
+boutonPopup.addEventListener("click", () => {
+
+    if (!produitSelectionne) return;
+
+    ajouterAuPanier(
+        produitSelectionne.description,
+        produitSelectionne.prix,
+        produitSelectionne.photo
+    );
+
+    popup.classList.remove("afficher");
+});
+</script>
 </body>
 </html>
 
