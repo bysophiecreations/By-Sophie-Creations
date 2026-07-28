@@ -72,7 +72,9 @@ content="index,follow">
         <a href="accueil.html" class="btn retour">
             Retour à l'accueil
         </a>
-        
+        <a href="monpanier.html" class="btn panier">
+    Mon panier
+</a>
     </section>
 <script>
 document.addEventListener("contextmenu", function(e){
@@ -154,10 +156,12 @@ document.querySelectorAll("img").forEach(img => {
 
 <script src="panier.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+function mettreAJourPanier() {
 
     const panier = JSON.parse(localStorage.getItem("panier")) || [];
     const badge = document.getElementById("nbArticles");
+
+    if (!badge) return;
 
     if (panier.length > 0) {
         badge.textContent = panier.length;
@@ -165,8 +169,16 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         badge.style.display = "none";
     }
+}
 
-});
+// Mise à jour au chargement
+mettreAJourPanier();
+
+// Mise à jour quand on revient sur la page
+window.addEventListener("pageshow", mettreAJourPanier);
+
+// Mise à jour si le panier est modifié depuis un autre onglet
+window.addEventListener("storage", mettreAJourPanier);
 </script>
 </body>
 
