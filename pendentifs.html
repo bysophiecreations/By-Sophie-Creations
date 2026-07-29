@@ -304,5 +304,30 @@ boutonPopup.addEventListener("click", () => {
     popup.classList.remove("afficher");
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const produit = params.get("produit");
+
+    if (!produit) return;
+
+    const produitTrouve = creations.find(function(c) {
+        return c.photo === produit;
+    });
+
+    if (!produitTrouve) return;
+
+    ouvrirProduit(
+        produitTrouve.photo,
+        produitTrouve.description,
+        produitTrouve.prix
+    );
+
+});
+</script>
+
+
 </body>
 </html>

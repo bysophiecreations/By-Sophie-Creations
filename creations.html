@@ -37,6 +37,56 @@ content="index,follow">
 </a>
     <section class="hero">
 
+<h2 class="titre-coups-de-coeur">Les coups de cœur de Sophie</h2>
+
+<div class="eventail-produits">
+    
+</div>
+
+
+
+
+
+<div class="eventail-produits">
+
+    <div class="carte-produit carte-1">
+        <img src="images/boucle220.jpg" alt="Boucles boucle220" class="photo-eventail">
+        <a href="boucles.html?produit=boucle220.jpg" class="voir-article">
+            Voir l'article
+        </a>
+    </div>
+
+    <div class="carte-produit carte-2">
+        <img src="images/B11.jpg" alt="Bracelet B11" class="photo-eventail">
+        <a href="bracelets.html?produit=B11.jpg" class="voir-article">
+            Voir l'article
+        </a>
+    </div>
+
+    <div class="carte-produit carte-3">
+        <img src="images/P33.jpg" alt="Pendentif P33" class="photo-eventail">
+        <a href="pendentifs.html?produit=P33.jpg" class="voir-article">
+            Voir l'article
+        </a>
+    </div>
+
+    <div class="carte-produit carte-4">
+        <img src="images/PC28.jpg" alt="Porte-clés PC28" class="photo-eventail">
+        <a href="porte-clés.html?produit=PC28.jpg" class="voir-article">
+            Voir l'article
+        </a>
+    </div>
+
+</div>
+
+<!-- Fenêtre photo en grand -->
+<div id="lightbox" class="lightbox">
+    <button id="fermerLightbox" class="fermer-lightbox">✕</button>
+    <img id="imageGrande" src="" alt="Photo agrandie">
+</div>
+
+
+</div>
         <img src="logo.jpg" alt="By Sophie Créations" class="logo-header">
 
         <h1>Mes créations</h1>
@@ -180,6 +230,63 @@ window.addEventListener("pageshow", mettreAJourPanier);
 // Mise à jour si le panier est modifié depuis un autre onglet
 window.addEventListener("storage", mettreAJourPanier);
 </script>
+```html
+<script>
+
+const photos = document.querySelectorAll(".photo-eventail");
+const lightbox = document.getElementById("lightbox");
+const imageGrande = document.getElementById("imageGrande");
+const fermerLightbox = document.getElementById("fermerLightbox");
+
+/* Cliquer sur une photo */
+photos.forEach(photo => {
+
+    photo.addEventListener("click", function() {
+
+        imageGrande.src = this.src;
+        imageGrande.alt = this.alt;
+
+        lightbox.style.display = "flex";
+
+    });
+
+});
+
+/* Fermer avec le X */
+fermerLightbox.addEventListener("click", function() {
+
+    lightbox.style.display = "none";
+    imageGrande.src = "";
+
+});
+
+/* Fermer en cliquant à côté de la photo */
+lightbox.addEventListener("click", function(e) {
+
+    if (e.target === lightbox) {
+
+        lightbox.style.display = "none";
+        imageGrande.src = "";
+
+    }
+
+});
+
+/* Fermer avec la touche Échap */
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+
+        lightbox.style.display = "none";
+        imageGrande.src = "";
+
+    }
+
+});
+
+</script>
+```
+
 </body>
 
 </html>

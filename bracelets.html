@@ -311,6 +311,36 @@ boutonPopup.addEventListener("click", () => {
     popup.classList.remove("afficher");
 });
 </script>
+
+<!-- Ouverture automatique du produit venant de l'éventail -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const produit = params.get("produit");
+
+    if (!produit) return;
+
+    // Cherche le produit correspondant dans la liste
+    const produitTrouve = creations.find(function(c) {
+        return c.photo === produit;
+    });
+
+    if (!produitTrouve) return;
+
+    // Ouvre automatiquement le popup déjà présent sur la page
+    ouvrirProduit(
+        produitTrouve.photo,
+        produitTrouve.description,
+        produitTrouve.prix
+    );
+
+});
+</script>
+
+
+
 </body>
 </html>
 

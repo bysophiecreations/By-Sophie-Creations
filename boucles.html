@@ -235,7 +235,6 @@ const creations = [
 {photo:"boucle194.jpg", description:"Feuille jaune avec feuille dorée", prix:"4 €"},
 {photo:"boucle195.jpg", description:"Larme verte avec une feuille blanche incrustée de cristaux verts", prix:"6 €"},
 {photo:"boucle196.jpg", description:"Oval bleu nuit avec fleurs dorées", prix:"5 €"},
-{photo:"boucle197.jpg", description:"Feuille marron foncé avec étoile de mer dorée", prix:"5 €"},
 {photo:"boucle199.jpg", description:"Feuille jaune avec soleil argenté", prix:"4 €"},
 {photo:"boucle200.jpg", description:"Larme jaune et feuille dorée", prix:"4 €"},
 {photo:"boucle201.jpg", description:"Cercle vert avec fleur blanche incrustée et bouddha doré", prix:"6 €"},
@@ -496,6 +495,31 @@ boutonPopup.addEventListener("click", () => {
     popup.classList.remove("afficher");
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const produit = params.get("produit");
+
+    if (!produit) return;
+
+    const produitTrouve = creations.find(function(c) {
+        return c.photo === produit;
+    });
+
+    if (!produitTrouve) return;
+
+    ouvrirProduit(
+        produitTrouve.photo,
+        produitTrouve.description,
+        produitTrouve.prix
+    );
+
+});
+</script>
+
+
 </body>
 
 </html>

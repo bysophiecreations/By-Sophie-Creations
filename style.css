@@ -41,7 +41,7 @@ body{
     width: 180px;
     height: auto;
     display: block;
-    margin: 30px auto;
+    margin: 10px auto;
 }
 
 h1 {
@@ -775,3 +775,222 @@ form button{
     cursor:pointer;
     color:#B8860B;
 }
+/* ============================= */
+/* ÉVENTAIL DES PRODUITS */
+/* ============================= */
+
+.eventail-produits {
+    position: absolute;
+
+    left: 40px;
+    top: 60px;
+
+    width: 200px;
+    height: 220px;
+}
+
+/* CARTES */
+
+.carte-produit {
+    position: absolute;
+
+    width: 100px;
+    padding: 6px;
+
+    background: white;
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+
+    text-align: center;
+
+    transition:
+        transform 0.35s ease,
+        z-index 0s;
+
+    transform-origin: bottom center;
+}
+
+/* IMAGES */
+
+.carte-produit img {
+    width: 100%;
+    height: 115px;
+
+    object-fit: cover;
+
+    border-radius: 7px;
+
+    display: block;
+}
+
+/* BOUTON */
+
+.voir-article {
+    display: block;
+
+    margin-top: 6px;
+    padding: 6px;
+
+    background: #B8860B;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+/* ============================= */
+/* POSITION EN ÉVENTAIL */
+/* ============================= */
+
+.carte-1 {
+    left: 0;
+    top: 35px;
+    transform: rotate(-15deg);
+    z-index: 1;
+}
+
+.carte-2 {
+    left: 60px;
+    top: 10px;
+    transform: rotate(-5deg);
+    z-index: 2;
+}
+
+.carte-3 {
+    left: 120px;
+    top: 10px;
+    transform: rotate(5deg);
+    z-index: 3;
+}
+
+.carte-4 {
+    left: 180px;
+    top: 35px;
+    transform: rotate(15deg);
+    z-index: 4;
+}
+
+.carte-produit:hover {
+    z-index: 20;
+    transform: translateY(-20px) scale(1.08) rotate(0deg);
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .eventail-produits {
+        width: 340px;
+        height: 260px;
+
+        margin: 20px auto;
+    }
+
+    .carte-produit {
+        width: 135px;
+    }
+
+    .carte-produit img {
+        height: 150px;
+    }
+
+    .carte-1 {
+        left: 0;
+    }
+
+    .carte-2 {
+        left: 65px;
+    }
+
+    .carte-3 {
+        left: 130px;
+    }
+
+    .carte-4 {
+        left: 195px;
+    }
+
+}
+
+/* ============================= */
+/* PHOTO DE L'EVENTAIL EN GRAND  */
+/* ============================= */
+
+.photo-eventail {
+    cursor: zoom-in;
+}
+
+/* Fond noir de la fenêtre */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.90);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+/* Image agrandie */
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.25);
+}
+
+/* Bouton fermer */
+.fermer-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+    font-size: 35px;
+
+    cursor: pointer;
+    z-index: 100000;
+}
+
+.fermer-lightbox:hover {
+    transform: scale(1.15);
+}
+
+/* Titre des coups de cœur au-dessus de l'éventail */
+
+.titre-coups-de-coeur {
+    text-align: center;
+
+    font-family: Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+    margin: 30px 0 12px;
+
+    letter-spacing: 0.5px;
+    transform: translateX(-440px); 
+}
+
+
+
+
+
