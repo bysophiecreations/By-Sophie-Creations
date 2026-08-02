@@ -90,35 +90,86 @@ const creations = [
 {photo:"P35.jpg", description:"Losange rouge avec fleur rouge (sans chaine)", prix:"4 €"},
 {photo:"P36.jpg", description:"Larme rose avec fleur et feuilles argentées", prix:"10 €"},
 {photo:"Parure9.jpg", description:"Parure (boucles et pendentif) rond noir et fleur blanche avec fleur rosé sur chainette", prix:"14 €"},
+{photo:"P37.jpg", description:"Cercle rose pailleté avec coeur et pierres", prix:"10 €"},
 
 
 
 ]
+
+
+
+// Mélange les créations
 creations.sort(() => Math.random() - 0.5);
 
 const galerie = document.getElementById("galerie");
 
 
 
-creations.forEach(c => {
 
 
-galerie.innerHTML += `
-    <div class="creation">
-        <img src="images/${c.photo}"
-     alt="${c.description}"
-     class="photo-produit"
-     onclick="event.stopPropagation(); ouvrirProduit('${c.photo}','${c.description}','${c.prix}')">
-        <p class="description">${c.description}</p>
-        <p class="prix">${c.prix}</p>
+function afficherGalerie(liste) {
 
-        <button class="btn-panier"
-            onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
-            Ajouter au panier
-        </button>
-    </div>
-`;
-});
+    galerie.innerHTML = "";
+
+    liste.forEach(c => {
+
+        galerie.innerHTML += `
+            <div class="creation">
+
+                <img src="images/${c.photo}"
+                     alt="${c.description}"
+                     class="photo-produit"
+                     onclick="event.stopPropagation(); ouvrirProduit('${c.photo}','${c.description}','${c.prix}')">
+
+                <p class="description">${c.description}</p>
+
+                <p class="prix">${c.prix}</p>
+
+                <button class="btn-panier"
+                    onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
+                    Ajouter au panier
+                </button>
+
+            </div>
+        `;
+    });
+
+}
+
+afficherGalerie(creations);
+
+
+function appliquerFiltres() {
+
+    let liste = [...creations];
+
+    const couleur = document.getElementById("filtreCouleur").value;
+
+    if (couleur !== "") {
+        liste = liste.filter(c =>
+            c.couleur &&
+            c.couleur.toLowerCase().includes(couleur.toLowerCase())
+        );
+    }
+
+    const tri = document.getElementById("triPrix").value;
+
+    if (tri === "croissant") {
+        liste.sort((a, b) => prixNombre(a.prix) - prixNombre(b.prix));
+    }
+
+    if (tri === "decroissant") {
+        liste.sort((a, b) => prixNombre(b.prix) - prixNombre(a.prix));
+    }
+
+    afficherGalerie(liste);
+}
+
+document.getElementById("filtreCouleur")
+        .addEventListener("change", appliquerFiltres);
+
+document.getElementById("triPrix")
+        .addEventListener("change", appliquerFiltres);
 
 
 function afficherNotification(){

@@ -56,6 +56,11 @@ content="index,follow">
         <option value="blanc">Blanc</option>
         <option value="noir">Noir</option>
         <option value="violet">Violet</option>
+        <option value="gris">Gris</option>
+        <option value="transparent">Transparent</option>
+        <option value="marron">Marron</option>
+        <option value="orange">Orange</option>
+   
     </select>
 
     <select id="triPrix">
@@ -151,54 +156,52 @@ const creations = [
 {photo:"boucle83.jpg", description:"Cercle vert et blanc rayuré avec zirconium", prix:"4 €", couleur:"vert, blanc"},
 {photo:"boucle84.jpg", description:"Cercle vert avec feuille dorée", prix:"4 €", couleur:"vert"},
 {photo:"boucle85.jpg", description:"Cercle bleu pailleté avec feuille dorée", prix:"4 €", couleur:"bleu"},
-{photo:"boucle87.jpg", description:"Rond rose pailleté avec feuille dorée", prix:"5 €"},
+{photo:"boucle87.jpg", description:"Rond rose pailleté avec feuille dorée", prix:"5 €", couleur:"rose"},
 {photo:"boucle88.jpg", description:"Rond bleu avec un arbre de vie", prix:"6 €", couleur:"bleu"},
 {photo:"boucle90.jpg", description:"Fleur jaune fluo", prix:"4€", couleur:"jaune"},
 {photo:"boucle91.jpg", description:"Fleur orange fluo", prix:"4 €", couleur:"orange"},
 {photo:"boucle94.jpg", description:"Rond transparent avec feuille verte et fleur orange", prix:"5 €", couleur:"vert, orange"},
 {photo:"boucle95.jpg", description:"Rond transparent avec fleurs bleues", prix:"4 €", couleur:"bleu"},
-{photo:"boucle97.jpg", description:"Rond transparent avec imprimé de fleur", prix:"4 €"},
+{photo:"boucle97.jpg", description:"Rond transparent avec imprimé de fleur", prix:"4 €", couleur:"transparent"},
 {photo:"boucle98.jpg", description:"Rond bleu avec tortue", prix:"5 €", couleur:"bleu"},
 {photo:"boucle99.jpg", description:"Feuille jaune avec zirconium", prix:"5 €", couleur:"jaune"},
-{photo:"boucle100.jpg", description:"Feuille transparente avec feuille dorée", prix:"4€"},
+{photo:"boucle100.jpg", description:"Feuille transparente avec feuille dorée", prix:"4€", couleur:"transparent"},
 {photo:"boucle101.jpg", description:"Cadre avec abeille", prix:"5 €", couleur:"jaune"},
 {photo:"boucle102.jpg", description:"Cadre bleu avec perle", prix:"5 €", couleur:"bleu"},
-{photo:"boucle104.jpg", description:"Feuille marron pailleté avec feuille dorée", prix:"5 €"},
-{photo:"boucle106.jpg", description:"Larme rose avec fleur blanche", prix:"5 €"},
+{photo:"boucle104.jpg", description:"Feuille marron pailleté avec feuille dorée", prix:"5 €", couleur:"marron"},
+{photo:"boucle106.jpg", description:"Larme rose avec fleur blanche", prix:"5 €", couleur:"rose"},
 {photo:"boucle107.jpg", description:"Larme rouge avec étoile de mer dorée", prix:"5 €", couleur:"rouge"},
 {photo:"boucle110.jpg", description:"Cadre noir pailleté avec feuille argentée", prix:"4 €", couleur:"noir"},
 {photo:"boucle111.jpg", description:"Larme noir pailleté avec fleur blanche", prix:"5 €", couleur:"noir"},
 {photo:"boucle113.jpg", description:"Larme transparente et sa fleur de coquelicot", prix:"5 €", couleur:"rouge"},
 {photo:"boucle114.jpg", description:"Larme transparente avec un arbre de vie rouge", prix:"5 €", couleur:"rouge"},
 {photo:"boucle115.jpg", description:"Larme transparente et papillon rouge", prix:"4 €", couleur:"rouge"},
-{photo:"Parure5.jpg", description:"Parure Larme rose et sa fleur blanche", prix:"12 €"},
-{photo:"boucle120.jpg", description:"Feuille blanc pailleté avec feuille et étoile de mer dorées", prix:"6 €"},
-{photo:"boucle124.jpg", description:"Oval rose avec ses coquillages dorés", prix:"6 €"},
+{photo:"Parure5.jpg", description:"Parure Larme rose et sa fleur blanche", prix:"12 €", couleur:"rose"},
+{photo:"boucle120.jpg", description:"Feuille blanc pailleté avec feuille et étoile de mer dorées", prix:"6 €", couleur:"blanc"},
 {photo:"boucle129.jpg", description:"Rond noir et papillon blanc", prix:"6 €", couleur:"noir"},
 {photo:"boucle130.jpg", description:"Oval orange pailleté et sa fée blanche", prix:"6 €", couleur:"orange"},
-{photo:"boucle131.jpg", description:"Oval rose marbré avec tortue dorée", prix:"5 €"},
-{photo:"boucle132.jpg", description:"Rond rose avec fleur blanche et feuille dorée", prix:"5€"},
+{photo:"boucle131.jpg", description:"Oval rose marbré avec tortue dorée", prix:"5 €", couleur:"rose"},
+{photo:"boucle132.jpg", description:"Rond rose avec fleur blanche et feuille dorée", prix:"5€", couleur:"rose"},
 {photo:"boucle133.jpg", description:"Oval noir avec ses feuilles dorées", prix:"4 €", couleur:"noir"},
-{photo:"boucle134.jpg", description:"Feuille rose avec soleil doré", prix:"5 €"},
+{photo:"boucle134.jpg", description:"Feuille rose avec soleil doré", prix:"5 €", couleur:"rose"},
 {photo:"boucle135.jpg", description:"Larme bleue avec un soleil doré sur 3 mini-feuilles dorées", prix:"6 €", couleur:"bleu"},
-{photo:"boucle136.jpg", description:"Larme rose avec un soleil et 4 feuilles dorés", prix:"5 €"},
+{photo:"boucle136.jpg", description:"Larme rose avec un soleil et 4 feuilles dorés", prix:"5 €", couleur:"rose"},
 {photo:"boucle137.jpg", description:"Hexagone bleu nuit avec soleil et feuille dorés", prix:"7 €", couleur:"bleu"},
 {photo:"boucle138.jpg", description:"Oval noir avec une feuille blanche", prix:"4 €", couleur:"noir"},
 {photo:"boucle143.jpg", description:"Larme orange avec feuille et soleil doré", prix:"4 €", couleur:"orange"},
-{photo:"boucle144.jpg", description:"Larme rose et fleur blanche", prix:"6 €"},
+{photo:"boucle144.jpg", description:"Larme rose et fleur blanche", prix:"6 €", couleur:"rose"},
 {photo:"boucle145.jpg", description:"Cercle jaune et soleil doré", prix:"6 €", couleur:"jaune"},
-{photo:"Parure6.jpg", description:"Parure rose pailletée et soleil doré", prix:"12 €"},
-{photo:"boucle146.jpg", description:"Larme rose pailletée avec feuille dorée", prix:"5 €"},
-{photo:"boucle147.jpg", description:"Cadre rose pailleté avec une fleur blanche", prix:"5 €", couleur:"vert"},
+{photo:"Parure6.jpg", description:"Parure rose pailletée et soleil doré", prix:"12 €", couleur:"rose"},
+{photo:"boucle146.jpg", description:"Larme rose pailletée avec feuille dorée", prix:"5 €", couleur:"rose"},
+{photo:"boucle147.jpg", description:"Cadre rose pailleté avec une fleur blanche", prix:"5 €", couleur:"rose"},
 {photo:"boucle148.jpg", description:"Feuille verte avec fleur blanche", prix:"5 €", couleur:"vert"},
 {photo:"boucle149.jpg", description:"Cadre vert avec ses fleurs blanches", prix:"6 €", couleur:"vert"},
 {photo:"boucle150.jpg", description:"Larme verte avec fleur blanche en rosace", prix:"6 €", couleur:"vert"},
 {photo:"boucle152.jpg", description:"Larme verte avec fleur jaune et verte", prix:"5 €", couleur:"vert"},
 {photo:"boucle153.jpg", description:"Feuille verte avec fleur blanche", prix:"5 €", couleur:"vert"},
 {photo:"boucle154.jpg", description:"Larme jaune avec soleil et feuilles argentés", prix:"6 €", couleur:"jaune"},
-{photo:"boucle156.jpg", description:"Hexagone gris marbré avec fleur métallique", prix:"4 €"},
+{photo:"boucle156.jpg", description:"Hexagone gris marbré avec fleur métallique", prix:"4 €", couleur:"gris"},
 {photo:"Parure7.jpg", description:"Parure boucles + pendentif Larme rouge avec soleil et feuille argentés", prix:"15 €", couleur:"marron"},
-{photo:"boucle158.jpg", description:"Larme jaune avec papillon incrusté et fleur dorée", prix:"6 €", couleur:"jaune"},
 {photo:"boucle161.jpg", description:"Larme jaune avec bouddah argenté", prix:"6 €", couleur:"jaune"},
 {photo:"boucle162.jpg", description:"Hexagone rosé incrusté avec une fleur blanche et une fleur métallique rosée", prix:"7 €", couleur:"blanc, rose"},
 {photo:"Parure8.jpg", description:"Parure boucles + pendentif Cercle bleu incrusté de fleurs blanches avec une fleur argentée", prix:"10 €", couleur:"bleu"},
@@ -248,14 +251,13 @@ const creations = [
 {photo:"boucle209.jpg", description:"Goutelette verte et sa fleur blanche", prix:"4 €", couleur:"vert"},
 {photo:"boucle210.jpg", description:"Larme rouge avec une fleur dorée", prix:"5 €", couleur:"rouge"},
 {photo:"boucle211.jpg", description:"Larme rouge avec une fleur argentée", prix:"5 €", couleur:"rouge"},
-{photo:"boucle212.jpg", description:"Feuille marron avec feuille dorée ou argentée", prix:"4 € la paire"},
+{photo:"boucle212.jpg", description:"Feuille marron avec feuille dorée ou argentée", prix:"4 € la paire", couleur:"marron"},
 {photo:"boucle213.jpg", description:"Rond orange avec un perroquet noir", prix:"5 €", couleur:"orange"},
 {photo:"boucle214.jpg", description:"Larme rouge avec fleur blanche", prix:"5 €", couleur:"rouge"},
 {photo:"boucle215.jpg", description:"Larme rouge avec fleur rouge", prix:"5 €", couleur:"rouge"},
 {photo:"boucle216.jpg", description:"Hexagone noir avec fleur noire et blanche", prix:"5 €", couleur:"noir"},
 {photo:"boucle217.jpg", description:"Losange orange avec une feuille blanche", prix:"5 €", couleur:"orange"},
 {photo:"boucle218.jpg", description:"Rectangle orange avec fleurs blanches", prix:"5 €", couleur:"orange"},
-{photo:"boucle220.jpg", description:"Larme rouge avec éléphant et fleurs dorés", prix:"5 €", couleur:"rouge"},
 
 
 ];
@@ -269,25 +271,79 @@ const galerie = document.getElementById("galerie");
 
 
 
-creations.forEach(c => {
 
-    galerie.innerHTML += `
-        <div class="creation">
-          <img src="images/${c.photo}"
-     alt="${c.description}"
-     class="photo-produit"
-     onclick="event.stopPropagation(); ouvrirProduit('${c.photo}','${c.description}','${c.prix}')">
-            <p class="description">${c.description}</p>
-            <p class="prix">${c.prix}</p>
+function afficherGalerie(liste) {
 
-            <button class="btn-panier"
-onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
-    Ajouter au panier
-</button>
-        </div>
-    `;
+    galerie.innerHTML = "";
 
-});
+    liste.forEach(c => {
+
+        galerie.innerHTML += `
+            <div class="creation">
+
+                <img src="images/${c.photo}"
+                     alt="${c.description}"
+                     class="photo-produit"
+                     onclick="event.stopPropagation(); ouvrirProduit('${c.photo}','${c.description}','${c.prix}')">
+
+                <p class="description">${c.description}</p>
+
+                <p class="prix">${c.prix}</p>
+
+                <button class="btn-panier"
+                    onclick="ajouterAuPanier('${c.description}','${c.prix}','${c.photo}')">
+                    Ajouter au panier
+                </button>
+
+            </div>
+        `;
+    });
+
+}
+
+afficherGalerie(creations);
+
+
+function appliquerFiltres() {
+
+    let liste = [...creations];
+
+    const couleur = document.getElementById("filtreCouleur").value;
+
+    if (couleur !== "") {
+        liste = liste.filter(c =>
+            c.couleur &&
+            c.couleur.toLowerCase().includes(couleur.toLowerCase())
+        );
+    }
+
+    const tri = document.getElementById("triPrix").value;
+
+    if (tri === "croissant") {
+        liste.sort((a, b) => prixNombre(a.prix) - prixNombre(b.prix));
+    }
+
+    if (tri === "decroissant") {
+        liste.sort((a, b) => prixNombre(b.prix) - prixNombre(a.prix));
+    }
+
+    afficherGalerie(liste);
+}
+
+document.getElementById("filtreCouleur")
+        .addEventListener("change", appliquerFiltres);
+
+document.getElementById("triPrix")
+        .addEventListener("change", appliquerFiltres);
+
+
+
+
+
+
+
+
+
 
 
 
