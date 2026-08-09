@@ -43,7 +43,33 @@ content="index,follow">
     <p>
         Découvrez notre collection de pendentifs artisanaux.
     </p>
+<div class="filtres">
 
+    <select id="filtreCouleur">
+        <option value="">Toutes les couleurs</option>
+        <option value="rouge">Rouge</option>
+        <option value="bleu">Bleu</option>
+        <option value="vert">Vert</option>
+        <option value="jaune">Jaune</option>
+        <option value="rose">Rose</option>
+        <option value="blanc">Blanc</option>
+        <option value="noir">Noir</option>
+        <option value="violet">Violet</option>
+        <option value="gris">Gris</option>
+        <option value="transparent">Transparent</option>
+        <option value="marron">Marron</option>
+        <option value="orange">Orange</option>
+        <option value="beige">Beige</option>
+   
+    </select>
+
+    <select id="triPrix">
+        <option value="">Trier par prix</option>
+        <option value="croissant">Prix croissant</option>
+        <option value="decroissant">Prix décroissant</option>
+    </select>
+
+</div>
     <div class="galerie-creations" id="galerie"></div>
 
     <a href="creations.html" class="btn retour">
@@ -60,37 +86,39 @@ content="index,follow">
 
 const creations = [
 
-{photo:"P2.jpg", description:"Cercle bleu avec feuille d or", prix:"5 €"},
-    {photo:"P3.jpg", description:"Cadre bleu incrusté de feuilles en or", prix:"10 €"},
-     {photo:"P12.jpg", description:"Coeur rouge pailleté", prix:"12 €"},
-{photo:"P13.jpg", description:"Cadre bleu pailleté avec feuille dorée", prix:"7 €"},
-    {photo:"P14.jpg", description:"Cadre transparent avec vagues bleues et feuille dorée", prix:"12 €"},
-    {photo:"P15.jpg", description:"Pomme verte avec serpentins métalliques", prix:"6 €"},
-   {photo:"P17.jpg", description:"Larme marron clair et sa torsade dorée", prix:"7 €"},
-    {photo:"P18.jpg", description:"Cercle blanc et tourbillon métallique", prix:"6 €"},
-    {photo:"P19.jpg", description:"Larme rouge pailletée avec feuille dorée, sertie dans un cadre doré", prix:"10 €"},
-    {photo:"P20.jpg", description:"Rectangle vert clair avec fissures et feuilles en or", prix:"9 €"},
-     {photo:"P23.jpg", description:"Larme orangée sous tourbillon métallique", prix:"3 €"},
-    {photo:"P24.jpg", description:"Ourson bleu", prix:"5 €"},
-{photo:"Parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €"},
-{photo:"Parure2.jpg", description:"Parure complète couleur en forme de larme marron clair assorti de coquillages", prix:"15 €"},
-{photo:"P25.jpg", description:"Pendentif orné avec une marguerite et une boule avec un zirconium", prix:"8 €"},
-{photo:"P26.jpg", description:"Rond vert avec un arbre de vie", prix:"10 €"},
-{photo:"Parure5.jpg", description:"Parure Larme rose et sa fleur blanche", prix:"12 €"},
-{photo:"P28.jpg", description:"Larme bleue ornée avec une perle", prix:"8 €"},
-{photo:"P29.jpg", description:"Cercle noir pailleté avec un zirconium", prix:"10 €"},
-{photo:"P30.jpg", description:"Oval transparent orné avec un arbre de vie doré", prix:"10 €"},
-{photo:"P31.jpg", description:"Oval transparent avec un coeur et une inscription LOVE en rouge", prix:"10 €"},
-{photo:"P32.jpg", description:"Rectangle blanc rosé avec papillon et étoile", prix:"10 €"},
-{photo:"Parure6.jpg", description:"Parure rose pailletée et soleil doré", prix:"12 €"},
-{photo:"Parure7.jpg", description:"Parure boucles + pendentif Larme rouge avec soleil et feuille argentés", prix:"15 €"},
- {photo:"Parure8.jpg", description:"Parure boucles + pendentif Cercle bleu incrusté de fleurs blanches avec une fleur argentée", prix:"10 €"},
-{photo:"P33.jpg", description:"Perle de résine turquoise et sa fleur dorée", prix:"10 €"},
- {photo:"P34.jpg", description:"Larme rouge avec fleur rouge et 3 feuilles dorées (sans chaine)", prix:"4 €"},
-{photo:"P35.jpg", description:"Losange rouge avec fleur rouge (sans chaine)", prix:"4 €"},
-{photo:"P36.jpg", description:"Larme rose avec fleur et feuilles argentées", prix:"10 €"},
-{photo:"Parure9.jpg", description:"Parure (boucles et pendentif) rond noir et fleur blanche avec fleur rosé sur chainette", prix:"14 €"},
-{photo:"P37.jpg", description:"Cercle rose pailleté avec coeur et pierres", prix:"10 €"},
+{photo:"P2.jpg", description:"Cercle bleu avec feuille d or", prix:"5 €", couleur:"bleu"},
+    {photo:"P3.jpg", description:"Cadre bleu incrusté de feuilles en or", prix:"10 €", couleur:"bleu"},
+     {photo:"P12.jpg", description:"Coeur rouge pailleté", prix:"12 €", couleur:"rouge"},
+{photo:"P13.jpg", description:"Cadre bleu pailleté avec feuille dorée", prix:"7 €", couleur:"bleu"},
+    {photo:"P14.jpg", description:"Cadre transparent avec vagues bleues et feuille dorée", prix:"12 €", couleur:"transparent"},
+    {photo:"P15.jpg", description:"Pomme verte avec serpentins métalliques", prix:"6 €", couleur:"vert"},
+   {photo:"P17.jpg", description:"Larme marron clair et sa torsade dorée", prix:"7 €", couleur:"marron"},
+    {photo:"P18.jpg", description:"Cercle blanc et tourbillon métallique", prix:"6 €", couleur:"blanc"},
+    {photo:"P19.jpg", description:"Larme rouge pailletée avec feuille dorée, sertie dans un cadre doré", prix:"10 €", couleur:"rouge"},
+    {photo:"P20.jpg", description:"Rectangle vert clair avec fissures et feuilles en or", prix:"9 €", couleur:"vert"},
+     {photo:"P23.jpg", description:"Larme orangée sous tourbillon métallique", prix:"3 €", couleur:"orange"},
+    {photo:"P24.jpg", description:"Ourson bleu", prix:"5 €", couleur:"bleu"},
+{photo:"Parure1.jpg", description:"Parure complète couleur vert et or", prix:"20 €", couleur:"vert"},
+{photo:"Parure2.jpg", description:"Parure complète couleur en forme de larme marron clair assorti de coquillages", prix:"15 €", couleur:"marron"},
+{photo:"P25.jpg", description:"Pendentif orné avec une marguerite et une boule avec un zirconium", prix:"8 €", couleur:"rose"},
+{photo:"P26.jpg", description:"Rond vert avec un arbre de vie", prix:"10 €", couleur:"vert"},
+{photo:"Parure5.jpg", description:"Parure Larme rose et sa fleur blanche", prix:"12 €", couleur:"rose, blanc"},
+{photo:"P28.jpg", description:"Larme bleue ornée avec une perle", prix:"8 €", couleur:"bleu"},
+{photo:"P29.jpg", description:"Cercle noir pailleté avec un zirconium", prix:"10 €", couleur:"noir"},
+{photo:"P30.jpg", description:"Oval transparent orné avec un arbre de vie doré", prix:"10 €", couleur:"transparent"},
+{photo:"P31.jpg", description:"Oval transparent avec un coeur et une inscription LOVE en rouge", prix:"10 €", couleur:"rouge, transparent"},
+{photo:"P32.jpg", description:"Rectangle blanc rosé avec papillon et étoile", prix:"10 €", couleur:"rose"},
+{photo:"Parure6.jpg", description:"Parure rose pailletée et soleil doré", prix:"12 €", couleur:"rose"},
+{photo:"Parure7.jpg", description:"Parure boucles + pendentif Larme rouge avec soleil et feuille argentés", prix:"15 €", couleur:"rouge"},
+ {photo:"Parure8.jpg", description:"Parure boucles + pendentif Cercle bleu incrusté de fleurs blanches avec une fleur argentée", prix:"10 €", couleur:"bleu, blanc"},
+{photo:"P33.jpg", description:"Perle de résine turquoise et sa fleur dorée", prix:"10 €", couleur:"bleu"},
+ {photo:"P34.jpg", description:"Larme rouge avec fleur rouge et 3 feuilles dorées (sans chaine)", prix:"4 €", couleur:"rouge"},
+{photo:"P35.jpg", description:"Losange rouge avec fleur rouge (sans chaine)", prix:"4 €", couleur:"rouge"},
+{photo:"P36.jpg", description:"Larme rose avec fleur et feuilles argentées", prix:"10 €", couleur:"rose"},
+{photo:"Parure9.jpg", description:"Parure (boucles et pendentif) rond noir et fleur blanche avec fleur rosé sur chainette", prix:"14 €", couleur:"noir, blanc, rose"},
+{photo:"P37.jpg", description:"Cercle rose pailleté avec coeur et pierres", prix:"10 €", couleur:"rose"},
+{photo:"P38.jpg", description:"Larme jaune avec fleur peinte en résine", prix:"10 €", couleur:"jaune"},
+{photo:"P39.jpg", description:"Larme rose avec fleur et feuilles argentées", prix:"10 €", couleur:"rose"},
 
 
 
@@ -172,6 +200,8 @@ document.getElementById("triPrix")
         .addEventListener("change", appliquerFiltres);
 
 
+
+
 function afficherNotification(){
 
     const notif = document.getElementById("notificationPanier");
@@ -202,6 +232,11 @@ function ajouterAuPanier(description, prix, photo) {
     mettreAJourPanier();
 
     afficherNotification();
+}
+    function prixNombre(prix) {
+    return parseFloat(
+        prix.replace(",", ".").replace(/[^0-9.]/g, "")
+    );
 }
 let produitSelectionne = null;
 

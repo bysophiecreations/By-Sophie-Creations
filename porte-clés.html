@@ -44,7 +44,33 @@ content="index,follow">
     <p>
         Découvrez notre collection de porte-clés artisanaux.
     </p>
+<div class="filtres">
 
+    <select id="filtreCouleur">
+        <option value="">Toutes les couleurs</option>
+        <option value="rouge">Rouge</option>
+        <option value="bleu">Bleu</option>
+        <option value="vert">Vert</option>
+        <option value="jaune">Jaune</option>
+        <option value="rose">Rose</option>
+        <option value="blanc">Blanc</option>
+        <option value="noir">Noir</option>
+        <option value="violet">Violet</option>
+        <option value="gris">Gris</option>
+        <option value="transparent">Transparent</option>
+        <option value="marron">Marron</option>
+        <option value="orange">Orange</option>
+        <option value="beige">Beige</option>
+   
+    </select>
+
+    <select id="triPrix">
+        <option value="">Trier par prix</option>
+        <option value="croissant">Prix croissant</option>
+        <option value="decroissant">Prix décroissant</option>
+    </select>
+
+</div>
     <div class="galerie-creations" id="galerie"></div>
 
     <a href="creations.html" class="btn retour">
@@ -61,23 +87,28 @@ content="index,follow">
 
 const creations = [
 
-    {photo:"PC1.jpg", description:"Diamant rouge", prix:"3 €"},
-    {photo:"PC3.jpg", description:"Diamant blanc", prix:"3 €"},
-    {photo:"PC4.jpg", description:"Pièce de puzzle", prix:"3 €"},
+    {photo:"PC1.jpg", description:"Diamant rouge", prix:"3 €", couleur:"rouge"},
+    {photo:"PC3.jpg", description:"Diamant blanc", prix:"3 €", couleur:"blanc"},
+    {photo:"PC4.jpg", description:"Pièce de puzzle", prix:"3 €", couleur:"bleu"},
     {photo:"PC6.jpg", description:"Porte-clé prénom", prix:"5 €"},
-    {photo:"PC7.jpg", description:"Papillon", prix:"3 € unité"},
+    {photo:"PC7.jpg", description:"Papillon", prix:"3 € unité", couleur:"orange"},
     {photo:"PC8.jpg", description:"Porte-clé personnalisable", prix:"5,50 €"},
-    {photo:"PC12.jpg", description:"Oval de cristal avec un coeur émeraude", prix:"2 €"},
-    {photo:"PC13.jpg", description:"Ourson vert kaki pailleté", prix:"3 €"},
-    {photo:"PC17.jpg", description:"Coeur avec inscription LOVE dans un cercle transparent", prix:"3 €"},
-{photo:"PC21.jpg", description:"Tortue blanche sur la plage", prix:"3 €"},
-{photo:"PC22.jpg", description:"Levé de soleil sur un palmier", prix:"4 €"},
-{photo:"PC23.jpg", description:"Oval transparent avec arbre de vie blanc et inscription La vie est belle", prix:"4 €"},
-{photo:"PC24.jpg", description:"Oval jaune incrusté avec un mignon petit renard", prix:"4 €"},
-{photo:"PC25.jpg", description:"Oval jaune incrusté avec une fée et des étoiles", prix:"3 €"},
-{photo:"PC26.jpg", description:"Double porte-clés Elle et lui avec lapin et marguerite", prix:"5 €"},
-{photo:"PC27.jpg", description:"Oval violet avec une hibou", prix:"3 €"},
-{photo:"PC28.jpg", description:"Oval transparent avec un panda", prix:"3 €"},
+    {photo:"PC12.jpg", description:"Oval de cristal avec un coeur émeraude", prix:"2 €", couleur:"bleu, transparent"},
+    {photo:"PC13.jpg", description:"Ourson vert kaki pailleté", prix:"3 €", couleur:"vert"},
+    {photo:"PC17.jpg", description:"Coeur avec inscription LOVE dans un cercle transparent", prix:"3 €", couleur:"transparent"},
+{photo:"PC21.jpg", description:"Tortue blanche sur la plage", prix:"3 €", couleur:"blanc, bleu"},
+{photo:"PC22.jpg", description:"Levé de soleil sur un palmier", prix:"4 €", couleur:"bleu, jaune, vert"},
+{photo:"PC23.jpg", description:"Oval transparent avec arbre de vie blanc et inscription La vie est belle", prix:"4 €", couleur:"transparent, blanc"},
+{photo:"PC24.jpg", description:"Oval jaune incrusté avec un mignon petit renard", prix:"4 €", couleur:"jaune, orange, blanc"},
+{photo:"PC25.jpg", description:"Oval jaune incrusté avec une fée et des étoiles", prix:"3 €", couleur:"jaune, noir"},
+{photo:"PC26.jpg", description:"Double porte-clés Elle et lui avec lapin et marguerite", prix:"5 €", couleur:"jaune, blanc, noir"},
+{photo:"PC27.jpg", description:"Oval violet avec une hibou", prix:"3 €", couleur:"rose, violet"},
+{photo:"PC28.jpg", description:"Oval transparent avec un panda", prix:"3 €", couleur:"noir, blanc, vert, transparent"},
+{photo:"PC29.jpg", description:"Rectangle avec ruche et abeille", prix:"3 €", couleur:"noir, jaune, vert, transparent"},
+{photo:"PC30.jpg", description:"Oval vert avec une marguerite", prix:"3 €", couleur:"vert, jaune, blanc"},
+{photo:"PC31.jpg", description:"Hexagone rouge avec papillon beige", prix:"3 €", couleur:"rouge, beige"},
+{photo:"PC32.jpg", description:"Rectangle orange avec papillon noir incrusté d'éclats de pierres dorés", prix:"3 €", couleur:"orange, noir"},
+{photo:"PC33.jpg", description:"Rectangle orange avec un lion noir", prix:"4 €", couleur:"orange, noir"},
 
 
 ];
@@ -185,6 +216,11 @@ function ajouterAuPanier(description, prix, photo) {
     mettreAJourPanier();
 
     afficherNotification();
+}
+ function prixNombre(prix) {
+    return parseFloat(
+        prix.replace(",", ".").replace(/[^0-9.]/g, "")
+    );
 }
 let produitSelectionne = null;
 
