@@ -63,61 +63,98 @@ content="index,follow">
 
 <script>
 
-const panier = JSON.parse(localStorage.getItem("panier")) || [];
+function afficherPanier() {
 
-const zonePanier = document.getElementById("panier");
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    const zonePanier = document.getElementById("panier");
 
-if (panier.length === 0) {
+    zonePanier.innerHTML = "";
 
-    zonePanier.innerHTML = "<p>Votre panier est vide.</p>";
+    if (panier.length === 0) {
 
-} else {
+        zonePanier.innerHTML = "<p>Votre panier est vide.</p>";
 
-    panier.forEach(article => {
+        return;
+    }
+
+    panier.forEach((article, index) => {
 
         zonePanier.innerHTML += `
             <div class="creation">
-                <img src="images/${article.photo}" alt="${article.description}">
+
+                <img src="images/${article.photo}" 
+                     alt="${article.description}">
+
                 <p>${article.description}</p>
+
                 <p class="prix">${article.prix}</p>
+
+                <button 
+                    type="button"
+                    onclick="supprimerArticle(${index})"
+                    class="btn-supprimer">
+                    Supprimer
+                </button>
+
             </div>
         `;
 
     });
-
 }
-function passerCommande() {
 
-    function mettreAJourPanier() {
+
+function supprimerArticle(index) {
+
+    let panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    // Supprime uniquement l'article sélectionné
+    panier.splice(index, 1);
+
+    // Enregistre le nouveau panier
+    localStorage.setItem("panier", JSON.stringify(panier));
+
+    // Réaffiche le panier
+    afficherPanier();
+
+    // Met à jour le nombre d'articles
+    mettreAJourPanier();
+}
+
+
+function viderPanier() {
+
+    localStorage.removeItem("panier");
+
+    afficherPanier();
+
+    mettreAJourPanier();
+}
+
+
+function mettreAJourPanier() {
 
     const panier = JSON.parse(localStorage.getItem("panier")) || [];
     const compteur = document.getElementById("nbArticles");
 
     if (panier.length > 0) {
+
         compteur.textContent = panier.length;
         compteur.style.display = "inline-flex";
+
     } else {
+
         compteur.style.display = "none";
+
     }
 }
 
+
+// Chargement initial
+afficherPanier();
 mettreAJourPanier();
 
-    let commande = "Bonjour,%0D%0A%0D%0AJe souhaite commander :%0D%0A%0D%0A";
-
-    panier.forEach(article => {
-        commande += "- " + article.description + " (" + article.prix + ")%0D%0A";
-    });
-
-    window.location.href =
-        "mailto:bysophiecreations@gmail.com?subject=Commande By Sophie Créations&body=" + commande;
-}
-function viderPanier() {
-    localStorage.removeItem("panier");
-    location.reload();
-}
-
 </script>
+
 <script>
 document.addEventListener("contextmenu", function(e){
     e.preventDefault();
